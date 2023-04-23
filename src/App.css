@@ -6,13 +6,13 @@
 
 body {
   font-family: sans-serif;
-  background-color: gray;
+  background-color: rgb(255, 255, 255);
 }
 
 header {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.07), 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   color: #000000;
-  background-color: #cc3852;
+  background-color: #1685cf;
 }
 
 .nav-area {
