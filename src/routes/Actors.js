@@ -26,10 +26,10 @@ const Actors = () => {
           </div>
         ))}
       </div>
-      <div>
-        <button onClick={()=>{if(page>1) setPage(--page)}}>Prev</button>
-        {page}
-        <button onClick={()=>{setPage(++page)}}>Next</button>
+      <div id="buttons-div">
+        <button onClick={()=>{if(page>1) setPage(--page)}}>⮜</button>
+        PAGE {page}
+        <button onClick={()=>{setPage(++page)}}>⮞</button>
       </div>
     </div>
   );

@@ -72,7 +72,7 @@ button span {
 
 .menu-items a:hover,
 .menu-items button:hover {
-  background-color: #d3d0d0;
+  background-color: #1479bd;
 }
 
 .arrow::after {
@@ -122,6 +122,6 @@ button span {
 }
 
 .content a {
-  color: #cc3852;
+  color: #000000;
   margin-right: 10px;
 }

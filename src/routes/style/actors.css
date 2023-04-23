@@ -12,8 +12,8 @@
 
 #actors-imgs-container{
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
 }
 
 #actors-imgs-container > div{
@@ -26,4 +26,17 @@
 #actors-imgs-container > div:hover{
     cursor: pointer;
     box-shadow: inset 5px 3px 8px black;
+}
+
+#buttons-div{
+    margin: auto;
+}
+#buttons-div>button{
+    font-size: 18px;
+    width: 150px;
+    height: 50px;
+    text-align: center;
+    margin:30px;
+    margin-left: 20px;
+    border-radius: 10px;
 }
