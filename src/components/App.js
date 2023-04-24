@@ -13,6 +13,7 @@ import Actors from "../routes/Actors";
 import MoviesTopRated from "../routes/MoviesTopRated";
 import SearchResult from "../routes/SearchResult"
 
+
 const App = () => {
 
   return (
