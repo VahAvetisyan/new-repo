@@ -5,11 +5,10 @@ const MoviesTopRated = () => {
   let [movies, setActors] = useState([])
   let [page,setPage] = useState(1)
   const api_key = "8cc8bb5915e1ce414955be2f44bcb790"
-
- const logJSONData = async()=> {
+  
+  const logJSONData = async()=> {
     let response = await fetch(`https://api.themoviedb.org/3/tv/popular?api_key=${api_key}&language=en-US&page=${page}`);
     let jsonData = await response.json();
-    console.log(jsonData);
     setActors(jsonData.results)
   }
 
@@ -32,7 +31,8 @@ const MoviesTopRated = () => {
         <button onClick={()=>{if(page>1) setPage(--page)}}>⮜</button>
         <b>PAGE {page}</b>
         <button onClick={()=>{setPage(++page)}}>⮞</button>
-      </div>
+        </div>
+        
     </div>
   );
 };

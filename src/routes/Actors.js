@@ -4,8 +4,8 @@ import "./style/actors.css"
 const Actors = () => {
   let [actors, setActors] = useState([])
   let [page,setPage] = useState(1)
-
- const logJSONData = async()=> {
+  
+  const logJSONData = async()=> {
     let response = await fetch(`https://api.themoviedb.org/3/person/popular?api_key=8cc8bb5915e1ce414955be2f44bcb790&language=en-US&page=${page}`);
     let jsonData = await response.json();
     setActors(jsonData.results)
@@ -28,9 +28,9 @@ const Actors = () => {
       </div>
       <div id="buttons-div">
         <button onClick={()=>{if(page>1) setPage(--page)}}>⮜</button>
-        PAGE {page}
+        <b>PAGE {page}</b>
         <button onClick={()=>{setPage(++page)}}>⮞</button>
-      </div>
+        </div>
     </div>
   );
 };

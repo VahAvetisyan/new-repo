@@ -10,6 +10,7 @@ import TopRatedTVShows from "../routes/TopRatedTVShows";
 import AiringToday from "../routes/AiringToday";
 import Actors from "../routes/Actors";
 import MoviesTopRated from "../routes/MoviesTopRated";
+import SearchResult from "../routes/SearchResult"
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
           <Route path="tv-shows/airing-today" element={<AiringToday />} />
           <Route path="tv-shows/on-tv" element={<OnTV />} />
           <Route path="tv-shows/top-rated" element={<TopRatedTVShows />} />
+          <Route path="search-result" element={<SearchResult />} />
           <Route path="actors" element={<Actors />} />
           <Route path="*" element={<Home />} />
         </Route>
