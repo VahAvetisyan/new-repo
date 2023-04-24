@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import React, {  useState } from "react";
 import Home from "../routes/Home";
 import MoviesPopular from "../routes/MoviesPopular";
 import MoviesNowPlaying from "../routes/MoviesNowPlaying";
@@ -13,6 +14,7 @@ import MoviesTopRated from "../routes/MoviesTopRated";
 import SearchResult from "../routes/SearchResult"
 
 const App = () => {
+
   return (
     <>
       <Routes>

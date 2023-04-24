@@ -17,7 +17,6 @@ export default function Search() {
       useEffect(() => {
         getSearchResult();
       },[searchValue]);
-    console.log(searchResult);
     const keyDownHandler = (e) => {
         if(e.code === "Enter"){
             navigate("search-result",{state: {movies:searchResult}})
