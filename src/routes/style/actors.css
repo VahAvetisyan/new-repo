@@ -1,42 +1,39 @@
-#actors{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+#actors {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-.actors-img{
-    width: 220px;
-    height: 290px;
-    margin-bottom: 15px;
-    border-radius: 10px;
-}
-
-#actors-imgs-container{
-    width: 100%;
-    display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
+.actors-img {
+  width: 257px;
+  height: 350px;
+  margin-bottom: 15px;
+  border-radius: 10px;
 }
 
-#actors-imgs-container > div{
-    color: rgb(0, 0, 0);
-    background-color: rgb(231, 231, 231);
-    border-radius: 10px;
-    padding: 10px;
-    margin: 20px;
-}
-#actors-imgs-container > div:hover{
-    cursor: pointer;
-    box-shadow: inset 5px 3px 8px black;
+.actors-img:hover{
+  cursor: pointer;
 }
 
-#buttons-div{
-    margin: auto;
+#actors-imgs-container {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
 }
-#buttons-div>button{
-    font-size: 18px;
-    width: 150px;
-    height: 50px;
-    text-align: center;
-    margin:30px;
-    margin-left: 20px;
-    border-radius: 10px;
+
+#actors-imgs-container>div{
+  margin-bottom: 35px;
+}
+
+#buttons-div {
+  margin: auto;
+}
+#buttons-div > button {
+  font-size: 18px;
+  width: 150px;
+  height: 50px;
+  text-align: center;
+  border-radius: 10px;
+}
+#buttons-div *{
+  margin-top: 25px;
+  margin-right: 15px;
 }

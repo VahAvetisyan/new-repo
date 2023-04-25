@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./style/home.css";
+import ImageSlider from "./ImageSlider";
 
 const Home = () => {
   let [movie, setMovie] = useState({});
@@ -12,30 +13,35 @@ const Home = () => {
     let jsonData = await response.json();
     setMovie(jsonData.results[0]);
   };
+  console.log(movie);
 
   useEffect(() => {
     logJSONData();
   }, []);
 
   return (
-    <div id="home">
-      <img
-        id="background-home-img"
-        src={`https://www.themoviedb.org/t/p/w138_and_h175_face/${movie.backdrop_path}`}
-        alt="movie"
-      />
-      <div>
+    <div
+      id="homepage"
+      style={{
+        backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie.backdrop_path})`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+      }}
+    >
+      <div id="homepage-poster">
         <img
           id="home-img"
-          src={`https://www.themoviedb.org/t/p/w138_and_h175_face/${movie.poster_path}`}
+          src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
           alt="movie"
         />
         <div id="info">
           <h2>Name: {movie.title}</h2>
           <h4>Release Date: {movie.release_date}</h4>
-          <div id="rating">
-          </div>
+          <h5>Discription: {movie.overview}</h5>
         </div>
+      </div>
+      <div>
+        <ImageSlider />
       </div>
     </div>
   );
