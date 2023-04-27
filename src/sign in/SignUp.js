@@ -17,6 +17,7 @@ import { auth } from "../firebase/firebase";
 import { useNavigate } from "react-router-dom";
 
 
+
 const theme = createTheme();
 
 export default function SignUp() {
@@ -112,7 +113,7 @@ export default function SignUp() {
                   control={
                     <Checkbox value="allowExtraEmails" color="primary" />
                   }
-                  label="I want to receive inspiration, marketing promotions and updates via email."
+                  label={<Link href="terms" variant="body2" underline={'hover'}>By registering you agree to the Sign Up Terms</Link>}
                 />
               </Grid>
             </Grid>

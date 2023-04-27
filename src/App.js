@@ -20,6 +20,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase/firebase";
 import ProfilePage from "./routes/ProfilePage";
 import Watchlist from "./routes/Watchlist";
+import Terms from "./sign in/Terms";
 
 const App = () => {
   const loggedInUser = useSelector(selectLoggedInUser);
@@ -43,6 +44,7 @@ const App = () => {
             <Route path="movies/upcoming" element={<MoviesUpcoming />} />
             <Route path="movies/now-playing" element={<MoviesNowPlaying />} />
             <Route path="movies/top-rated" element={<MoviesTopRated />} />
+            <Route path="terms" element={<Terms />} />
             <Route path="tv-shows/popular" element={<PopularTVShows />} />
             <Route path="tv-shows/airing-today" element={<AiringToday />} />
             <Route path="tv-shows/on-tv" element={<OnTV />} />
@@ -65,6 +67,7 @@ const App = () => {
             <Route path="tv-shows/on-tv" element={<OnTV />} />
             <Route path="tv-shows/top-rated" element={<TopRatedTVShows />} />
             <Route path="search-result" element={<SearchResult />} />
+            <Route path="terms" element={<Terms />} />
             <Route path="sign-in" element={<SignIn />} />
             <Route path="sign-up" element={<SignUp />} />
             <Route path="actors" element={<Actors />} />
