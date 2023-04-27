@@ -1,50 +1,47 @@
-import * as React from 'react';
-import Button from '@mui/material/Button';
-import Snackbar from '@mui/material/Snackbar';
-import IconButton from '@mui/material/IconButton';
-import CloseIcon from '@mui/icons-material/Close';
+import * as React from "react"
+import Button from "@mui/material/Button"
+import Snackbar from "@mui/material/Snackbar"
+import IconButton from "@mui/material/IconButton"
+import CloseIcon from "@mui/icons-material/Close"
+import { useDispatch, useSelector } from "react-redux"
+import {
+  selectSnackBarData,
+  setSnackBarData
+} from "../redux/reducers/snackBarReducer"
+import Stack from "@mui/material/Stack"
+import MuiAlert from "@mui/material/Alert"
 
-export default function SimpleSnackbar() {
-  const [open, setOpen] = React.useState(false);
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
+})
 
+export default function SimpleSnackbar(props) {
+  const { open, message, severity } = useSelector(selectSnackBarData)
+  const dispatch = useDispatch()
   const handleClick = () => {
-    setOpen(true);
-  };
-  const handleClose = (event, reason) => {
+    dispatch(
+      setSnackBarData({
+        open: props.open,
+        message: props.message,
+        severity: props.severity
+      })
+    )
+  }
 
-    if (reason === 'clickaway') {
-      return;
-    }
-
-    setOpen(false);
-  };
-
-  const action = (
-    <React.Fragment>
-      <Button color="secondary" size="small" onClick={handleClose}>
-        UNDO
-      </Button>
-      <IconButton
-        size="small"
-        aria-label="close"
-        color="inherit"
-        onClick={handleClose}
-      >
-        <CloseIcon fontSize="small" />
-      </IconButton>
-    </React.Fragment>
-  );
+  const handleClose = () => {
+    dispatch(setSnackBarData({ open: false }))
+  }
 
   return (
-    <div>
-      <Button onClick={handleClick}>Open simple snackbar</Button>
-      <Snackbar
-        open={open}
-        autoHideDuration={6000}
-        onClose={handleClose}
-        message="Note archived"
-        action={action}
-      />
-    </div>
-  );
+    <Stack spacing={2} sx={{ width: "100%" }}>
+      <Button variant="outlined" onClick={handleClick}>
+        Sign Up{" "}
+      </Button>
+      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity={severity} sx={{ width: "100%" }}>
+          {message}
+        </Alert>
+      </Snackbar>
+    </Stack>
+  )
 }

@@ -1,23 +1,23 @@
-import React, { useEffect, useState } from "react";
-import "./style/home.css";
-import ImageSlider from "./ImageSlider";
-
+import React, { useEffect, useState } from "react"
+import "./style/home.css"
+import ImageSlider from "./ImageSlider"
+import SimpleSnackbar from "../components/SnackBar"
 
 const Home = () => {
-  let [movie, setMovie] = useState({});
+  let [movie, setMovie] = useState({})
 
   const logJSONData = async () => {
-    let api_key = "8cc8bb5915e1ce414955be2f44bcb790";
+    let api_key = "8cc8bb5915e1ce414955be2f44bcb790"
     let response = await fetch(
       `https://api.themoviedb.org/3/movie/popular?api_key=${api_key}&language=en-US&page=1`
-    );
-    let jsonData = await response.json();
-    setMovie(jsonData.results[0]);
-  };
+    )
+    let jsonData = await response.json()
+    setMovie(jsonData.results[0])
+  }
 
   useEffect(() => {
-    logJSONData();
-  }, []);
+    logJSONData()
+  }, [])
 
   return (
     <div
@@ -25,7 +25,7 @@ const Home = () => {
       style={{
         backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie.backdrop_path})`,
         backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
+        backgroundSize: "cover"
       }}
     >
       <div id="homepage-poster">
@@ -44,7 +44,7 @@ const Home = () => {
         <ImageSlider />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

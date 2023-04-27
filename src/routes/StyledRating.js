@@ -27,6 +27,4 @@ export default function CustomizedRating() {
     />
   );
 }
-dwkjkckdlwd;
-kweldkw;
-dwd;
+
