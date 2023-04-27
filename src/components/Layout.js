@@ -5,7 +5,7 @@ const Layout = (props) => {
   let loggedInUser = props.isLoggedInUser;
   return (
     <div>
-      <Header isLoggedInUser={loggedInUser}/>
+      <Header isLoggedInUser={loggedInUser} />
       <div className="content">
         <Outlet />
       </div>
