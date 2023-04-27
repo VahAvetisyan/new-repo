@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./style/home.css";
 import ImageSlider from "./ImageSlider";
 
+
 const Home = () => {
   let [movie, setMovie] = useState({});
 
