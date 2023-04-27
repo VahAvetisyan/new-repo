@@ -15,23 +15,25 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase/firebase";
 import { useNavigate } from "react-router-dom";
-
-
+import SimpleSnackbar from "../components/SnackBar";
 
 const theme = createTheme();
 
 export default function SignUp() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const userCred = await createUserWithEmailAndPassword(auth, email, password);
-      console.log('created and signed in', userCred)
-      navigate('/')
-
+      const userCred = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      console.log("created and signed in", userCred);
+      navigate("/");
     } catch (error) {
       console.log(error.message);
     }
@@ -113,7 +115,11 @@ export default function SignUp() {
                   control={
                     <Checkbox value="allowExtraEmails" color="primary" />
                   }
-                  label={<Link href="terms" variant="body2" underline={'hover'}>By registering you agree to the Sign Up Terms</Link>}
+                  label={
+                    <Link href="terms" variant="body2" underline={"hover"}>
+                      By registering you agree to the Sign Up Terms
+                    </Link>
+                  }
                 />
               </Grid>
             </Grid>
@@ -123,7 +129,7 @@ export default function SignUp() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign Up
+              <SimpleSnackbar />
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
@@ -138,7 +144,3 @@ export default function SignUp() {
     </ThemeProvider>
   );
 }
-
-
-
-
