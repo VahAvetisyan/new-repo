@@ -5,6 +5,10 @@
   text-decoration: none;
 }
 
+.tag>h2>a{
+  color: white;
+}
+
 .slick-slide {
   display: flex;
   flex-direction: column;
@@ -18,7 +22,7 @@
 
 .imgslider {
   border-radius: 10px;
-  background-color: rgba(6, 4, 87, 0.377);
+  background-color: rgba(36, 36, 36, 0.788);
 }
 #imgs-container {
   height: 100%;

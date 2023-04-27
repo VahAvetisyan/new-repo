@@ -23,7 +23,7 @@ const ImageSlider = () => {
   const settings = {
     infinite: true,
     dots: true,
-    slidesToShow: 4,
+    slidesToShow: 5,
     slidesToScroll: 1,
     lazyLoad: true,
     autoplay: true,

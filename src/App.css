@@ -6,13 +6,14 @@
 
 body {
   font-family: sans-serif;
-  background-color: #ffffff;
+  background-color: #000000;
+  color: #ffffff;
 }
 
 header {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.07), 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   color: #ffffff;
-  background-color: #105f94;
+  background-color: #222222;
 }
 
 .nav-area {
@@ -73,7 +74,7 @@ button span {
 
 .menu-items a:hover,
 .menu-items button:hover {
-  background-color: #3997d6;
+  background-color: #4d4d4d;
 }
 
 .arrow::after {
@@ -97,7 +98,7 @@ button span {
   min-width: 10rem;
   padding: 0.5rem 0;
   list-style: none;
-  background-color: #1776b6;
+  background-color: #2c2c2c;
   border-radius: 0.5rem;
   display: none;
 }
@@ -171,7 +172,7 @@ button {
 }
 
 .signInSignUpButtons button:hover {
-  background-color: #3997d6;
+  background-color: #4d4d4d;
 }
 
 .signInSignUpButtons button a{
