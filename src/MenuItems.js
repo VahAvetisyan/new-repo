@@ -55,8 +55,8 @@ export const profile = [
     title: <PersonIcon />,
     submenu: [
       {
-        title: "Profil",
-        url: "user-profil",
+        title: "Profile",
+        url: "user-profile",
       },
       {
         title: "Watchlist",
