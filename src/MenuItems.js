@@ -1,3 +1,5 @@
+import PersonIcon from '@mui/icons-material/Person';
+
 export const menuItems = [
   {
     title: "Movies",
@@ -47,3 +49,19 @@ export const menuItems = [
     url: "actors",
   },
 ];
+
+export const profile = [
+  {
+    title: <PersonIcon />,
+    submenu: [
+      {
+        title: "Profil",
+        url: "user-profil",
+      },
+      {
+        title: "Watchlist",
+        url: "user-watchlist",
+      },
+    ],
+  }
+]

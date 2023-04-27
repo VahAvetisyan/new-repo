@@ -15,7 +15,6 @@ const ImageSlider = () => {
     let jsonData = await response.json();
     setMovie(jsonData.results);
   };
-  console.log(movie);
 
   useEffect(() => {
     logJSONData();

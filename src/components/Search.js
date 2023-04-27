@@ -25,7 +25,7 @@ export default function Search() {
     }
   };
   const onClickHandler = () => {
-    navigate("search-result", { state: searchResult });
+    navigate("search-result", { state: { movies: searchResult } });
   };
 
   return (

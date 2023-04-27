@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 .actors-img {
-  width: 257px;
+  width: 235  px;
   height: 350px;
   margin-bottom: 15px;
   border-radius: 10px;
@@ -32,6 +32,7 @@
   height: 50px;
   text-align: center;
   border-radius: 10px;
+  background-color: #105f94;
 }
 #buttons-div *{
   margin-top: 25px;

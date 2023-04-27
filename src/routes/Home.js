@@ -13,7 +13,6 @@ const Home = () => {
     let jsonData = await response.json();
     setMovie(jsonData.results[0]);
   };
-  console.log(movie);
 
   useEffect(() => {
     logJSONData();

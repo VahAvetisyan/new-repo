@@ -17,8 +17,9 @@ header {
 
 .nav-area {
   display: flex;
+  justify-content: center;
   align-items: center;
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
   padding: 10px 20px;
 }
@@ -27,13 +28,12 @@ header {
   text-decoration: none;
   font-size: 25px;
   color: inherit;
-  margin-right: 20px;
+  margin-right: 50px;
 }
 
 .menus {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
   list-style: none;
   flex-direction: row;
 }
@@ -53,7 +53,7 @@ header {
 .menu-items button {
   display: flex;
   align-items: center;
-  color: inherit;
+  color: white;
   font-size: inherit;
   border: none;
   background-color: transparent;
@@ -62,12 +62,12 @@ header {
 }
 
 button span {
-  margin-left: 3px;
+  margin-left: 10px;
 }
 
 .menu-items > a,
 .menu-items button {
-  text-align: left;
+  text-align: center;
   padding: 0.7rem 1rem;
 }
 
@@ -131,18 +131,50 @@ button span {
   font-size: 16px;
   border-radius: 5px;
   padding-left: 10px;
-  width: 200px;
+  width: 250px;
   height: 40px;
   justify-self: flex-end;
+  border: none;
+
 }
 
 #search-button {
   border-radius: 5px;
   width: 40px;
   height: 40px;
+  margin-left: 5px;
 }
 
 #search-div {
-  margin-left: 250px;
+  margin-left: 200px;
   display: flex;
+}
+
+button {
+  border: none;
+}
+.signInSignUpButtons{
+  display: flex;
+  align-items: center;
+  /* margin-left: 20px; */
+}
+
+.signInSignUpButtons button{
+  text-align: center;
+  color: white;
+  font-size: 16px;
+  border: none;
+  background-color: #00000000;
+  cursor: pointer;
+  width: 70px;
+  height: 40px;
+}
+
+.signInSignUpButtons button:hover {
+  background-color: #3997d6;
+}
+
+.signInSignUpButtons button a{
+  color: white;
+  text-decoration: none;
 }

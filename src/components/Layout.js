@@ -1,10 +1,11 @@
 import { Outlet } from "react-router-dom";
 import Header from "./Header";
 
-const Layout = () => {
+const Layout = (props) => {
+  let loggedInUser = props.isLoggedInUser;
   return (
     <div>
-      <Header />
+      <Header isLoggedInUser={loggedInUser}/>
       <div className="content">
         <Outlet />
       </div>

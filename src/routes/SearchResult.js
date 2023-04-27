@@ -4,9 +4,8 @@ import { useLocation } from "react-router-dom";
 
 const MoviesNowPlaying = () => {
   let [movies, setMovies] = useState([]);
-  let [page, setPage] = useState(1);
 
-  const location = useLocation();
+  const location = useLocation("search-result");
   let moviesArr = location.state.movies;
 
   useEffect(() => {
@@ -34,7 +33,7 @@ const MoviesNowPlaying = () => {
                 className="actors-img"
                 key={movie.original_title}
                 src={`https://static.vecteezy.com/system/resources/previews/010/191/968/non_2x/error-404-icon-isolated-contour-symbol-illustration-vector.jpg`}
-                alt="404"
+                alt="404 Image Not Found"
               />
               <h3>{movie.title}</h3>
             </div>
