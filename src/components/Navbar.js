@@ -50,8 +50,8 @@ console.log("navbar",loggedInUser)
       })}
       <Search />
       <div className="signInSignUpButtons">
-      <button><a href="sign-in">Sign In</a></button>
-      <button><a href="sign-up">Sign Up</a></button>
+      <button><a href="/sign-in">Sign In</a></button>
+      <button><a href="/sign-up">Sign Up</a></button>
       </div>
     </ul>
       }
