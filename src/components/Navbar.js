@@ -9,7 +9,6 @@ import LogoutIcon from "@mui/icons-material/Logout"
 const onLogOutClick = () => {
   signOut(auth)
     .then(() => {
-      console.log("good by")
     })
     .catch((error) => {
       console.log(error.message)
@@ -19,7 +18,6 @@ const onLogOutClick = () => {
 const Navbar = (props) => {
   let loggedInUser = props.isLoggedInUser
 
-  console.log("navbar", loggedInUser)
 
   return (
     <nav>

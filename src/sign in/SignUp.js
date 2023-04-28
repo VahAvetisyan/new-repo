@@ -1,44 +1,53 @@
-import React, { useState } from "react"
-import Avatar from "@mui/material/Avatar"
-import Button from "@mui/material/Button"
-import CssBaseline from "@mui/material/CssBaseline"
-import TextField from "@mui/material/TextField"
-import FormControlLabel from "@mui/material/FormControlLabel"
-import Checkbox from "@mui/material/Checkbox"
-import Link from "@mui/material/Link"
-import Grid from "@mui/material/Grid"
-import Box from "@mui/material/Box"
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined"
-import Typography from "@mui/material/Typography"
-import Container from "@mui/material/Container"
-import { createTheme, ThemeProvider } from "@mui/material/styles"
-import { createUserWithEmailAndPassword } from "firebase/auth"
-import { auth } from "../firebase/firebase"
-import { useNavigate } from "react-router-dom"
-import SimpleSnackbar from "../components/SnackBar"
-import { Snackbar } from "@mui/material"
+import React, { useState } from "react";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Link from "@mui/material/Link";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase/firebase";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setSnackBarData } from "../redux/reducers/snackBarReducer";
 
-const theme = createTheme()
+const theme = createTheme();
 
 export default function SignUp() {
-  const navigate = useNavigate()
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
 
   const handleSubmit = async (event) => {
-    event.preventDefault()
+    event.preventDefault();
     try {
-      const userCred = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      )
-      console.log("created and signed in", userCred)
-      navigate("/")
+      await createUserWithEmailAndPassword(auth, email, password);
+      dispatch(
+        setSnackBarData({
+          open: true,
+          message: "ACCOUNT SUCCESSFULLY CREATED",
+          severity: "success",
+        })
+      );
+      navigate("/");
     } catch (error) {
-      console.log(error.message)
+      dispatch(
+        setSnackBarData({
+          open: true,
+          message: `${(error.message).slice(10)}`,
+          severity: "error",
+        })
+      );
     }
-  }
+  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -49,7 +58,7 @@ export default function SignUp() {
             marginTop: 8,
             display: "flex",
             flexDirection: "column",
-            alignItems: "center"
+            alignItems: "center",
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
@@ -130,11 +139,7 @@ export default function SignUp() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              <SimpleSnackbar
-                open={true}
-                message={"account created"}
-                severity={"success"}
-              />
+              Sign Up
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
@@ -147,5 +152,5 @@ export default function SignUp() {
         </Box>
       </Container>
     </ThemeProvider>
-  )
+  );
 }
