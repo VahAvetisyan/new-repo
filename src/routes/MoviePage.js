@@ -69,7 +69,7 @@ export default function MoviePage() {
       <div className='video'>
                 {videos.map((el) => (
                     <iframe key={el.key} width="400" height="250" src={`https://www.youtube.com/embed/${el.key}`} title="YouTube video player"
-                        frameBorder="0"></iframe>
+                        frameBorder="0" allowfullscreen="allowfullscreen"></iframe>
                 ))}
         </div>
         </div>

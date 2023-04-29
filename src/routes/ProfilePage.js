@@ -35,7 +35,7 @@ function Profile() {
         Upload Image
       </button>
       <div id="info">
-        <h3>Fullname: MARIO</h3>
+        <h3>Fullname: Super Mario</h3>
         <h5>Gender: Male</h5>
         <h5>Age: 48</h5>
         <h5>Bio: Asenq te hamapatasxanabar</h5>
