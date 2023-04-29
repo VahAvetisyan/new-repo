@@ -53,7 +53,7 @@ export default function ActorsBio() {
                 <img
                   key={movie.original_title}
                   src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-                  alt="actor"
+                  alt="actor-img"
                 />
                 <h3>{movie.original_title}</h3>
               </div>
