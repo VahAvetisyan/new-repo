@@ -20,19 +20,9 @@ export default function ActorsBio() {
     setActorBio(jsonData);
   };
  
- 
   useEffect(() => {
     getActorInfo();
   }, [actor]);
-
-  const settings = {
-    infinite: true,
-    slidesToShow: 2,
-    slidesToScroll: 1,
-    lazyLoad: true,
-    autoplay: true,
-    autoplaySpeed: 2000,
-  };
 
   const handlerOnClick = (movie, name) => {
     navigate(`/movie/${name}`,{state:{
