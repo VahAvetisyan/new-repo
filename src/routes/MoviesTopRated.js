@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./style/actors.css";
+import { useNavigate } from "react-router-dom";
 
 const MoviesTopRated = () => {
+  const navigate = useNavigate()
   let [movies, setActors] = useState([]);
   let [page, setPage] = useState(1);
   const api_key = "8cc8bb5915e1ce414955be2f44bcb790";
@@ -18,12 +20,19 @@ const MoviesTopRated = () => {
     logJSONData();
   }, [page]);
 
+  const handlerOnClick = (movie, name) => {
+    navigate(`/movie/${name}`,{state:{
+      movie: movie,
+    }})
+  }
+
+
   return (
     <div id="actors">
       <h2>Top Rated Movies</h2>
       <div id="actors-imgs-container">
         {movies.map((movie) => (
-          <div key={movie.original_title}>
+          <div key={movie.original_title} onClick={()=>{handlerOnClick(movie, movie.original_title)}}>
             <img
               className="actors-img"
               key={movie.original_title}

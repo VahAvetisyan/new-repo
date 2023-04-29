@@ -136,7 +136,7 @@ button span {
   height: 40px;
   justify-self: flex-end;
   border: none;
-
+  color: black;
 }
 
 #search-button {
@@ -162,7 +162,7 @@ button {
 
 .signInSignUpButtons button{
   text-align: center;
-  color: white;
+  color: rgb(255, 255, 255);
   font-size: 16px;
   border: none;
   background-color: #00000000;

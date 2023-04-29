@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./style/actors.css";
+import { useNavigate } from "react-router-dom";
 
 const MoviesNowPlaying = () => {
+  const navigate = useNavigate()
   let [movies, setActors] = useState([]);
   let [page, setPage] = useState(1);
 
@@ -14,6 +16,11 @@ const MoviesNowPlaying = () => {
     let jsonData = await response.json();
     setActors(jsonData.results);
   };
+  const handlerOnClick = (movie, name) => {
+    navigate(`/movie/${name}`,{state:{
+      movie: movie,
+    }})
+  }
 
   useEffect(() => {
     logJSONData();
@@ -24,7 +31,7 @@ const MoviesNowPlaying = () => {
       <h2>Now Playing</h2>
       <div id="actors-imgs-container">
         {movies.map((movie) => (
-          <div key={movie.original_title}>
+          <div key={movie.original_title} onClick={()=>{handlerOnClick(movie, movie.original_title)}}>
             <img
               className="actors-img"
               key={movie.original_title}

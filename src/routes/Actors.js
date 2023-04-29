@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./style/actors.css";
+import { useNavigate } from "react-router-dom";
 
 const Actors = () => {
+  const navigate = useNavigate()
   let [actors, setActors] = useState([]);
   let [page, setPage] = useState(1);
 
@@ -13,6 +15,13 @@ const Actors = () => {
     setActors(jsonData.results);
   };
 
+  const handlerOnClick = (actor, name) => {
+    navigate(`/people/${name}`,{state:{
+      actor: actor,
+    }})
+  }
+
+
   useEffect(() => {
     logJSONData();
   }, [page]);
@@ -22,7 +31,7 @@ const Actors = () => {
       <h2>Popular People</h2>
       <div id="actors-imgs-container">
         {actors.map((actor) => (
-          <div key={actor.name}>
+          <div key={actor.name} onClick={()=>{handlerOnClick(actor, actor.name)}}>
             <img
               className="actors-img"
               key={actor.name}

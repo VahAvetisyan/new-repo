@@ -24,8 +24,10 @@ input{
     height: 50px;
     font-size: large;
     margin-left: 20px;
+    cursor: pointer;
 }
 
 #profile-page{
     display: flex;
 }
+

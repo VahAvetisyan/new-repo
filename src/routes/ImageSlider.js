@@ -3,8 +3,10 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./style/imageSlider.css";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ImageSlider = () => {
+  const navigate = useNavigate()
   let [movie, setMovie] = useState([]);
 
   const logJSONData = async () => {
@@ -16,13 +18,18 @@ const ImageSlider = () => {
     setMovie(jsonData.results);
   };
 
+  const handlerOnClick = (movie, name) => {
+    navigate(`/movie/${name}`,{state:{
+      movie: movie,
+    }})
+  }
+
   useEffect(() => {
     logJSONData();
   }, []);
 
   const settings = {
     infinite: true,
-    // dots: true,
     slidesToShow: 5,
     slidesToScroll: 1,
     lazyLoad: true,
@@ -41,7 +48,7 @@ const ImageSlider = () => {
         <Slider {...settings}>
           {movie.map((movie) => (
             <div key={movie.id} id="imgs-container">
-              <div key={movie.original_title} id="nested-imgs-container">
+              <div key={movie.original_title} id="nested-imgs-container" onClick={()=>{handlerOnClick(movie, movie.original_title)}}>
                 <img
                   key={movie.original_title}
                   src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}

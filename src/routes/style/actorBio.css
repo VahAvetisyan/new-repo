@@ -1,0 +1,44 @@
+.img-div{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color: rgba(255, 255, 255, 0.151);
+    padding: 30px;
+    border-radius: 10px;
+  }
+  
+.img-div img{
+ width: 230px;
+ height: 350px;
+ border-radius: 10px;
+
+}
+.img-div h3{
+    padding-top: 10px;
+    cursor: pointer;
+}
+.img-div img:hover{
+    cursor: pointer;
+    width: 240px;
+    height: 360px;
+}
+
+#actorPage-poster {
+    display: flex;
+   justify-content: space-around;
+   align-items: flex-start;
+}
+
+#actorPage-poster div{
+    height: 100%;
+}
+#actorPage-poster img{
+    padding: 20px;
+    margin: 30px 0px;
+    width: 320px;
+    height: 450px;
+   }
+.info{
+    max-width: 340px;
+}
