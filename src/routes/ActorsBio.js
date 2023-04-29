@@ -59,7 +59,7 @@ export default function ActorsBio() {
       </div>
       <div className="img-div">
           {knownFor.map((movie) => (
-              <div key={movie.original_title} onClick={()=>{handlerOnClick(movie, movie.original_title)}}>
+              <div key={movie.id} onClick={()=>{handlerOnClick(movie, movie.original_title)}}>
                 <img
                   key={movie.original_title}
                   src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
