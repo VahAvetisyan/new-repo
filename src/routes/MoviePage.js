@@ -1,21 +1,40 @@
-import React, { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom';
+import React, { useCallback, useEffect, useState } from 'react'
+import { useLocation, useParams } from 'react-router-dom';
 import "./style/moviePage.css"
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import MovieReviews from './Movie Comments and Rating/MovieReviews';
+import { CircularProgress, LinearProgress } from '@mui/material';
 
 export default function MoviePage() {
+  const {movieId} = useParams()
+  console.log(movieId);
     const location = useLocation("/movie");
-    let [videos, setVideos] = useState([]);
+    const [videos, setVideos] = useState([]);
+    const [movie, setMovie] = useState(null);
 
- const movie = location.state.movie;
+    const getMovie = useCallback( async(mId)=>{
+      let api_key = "8cc8bb5915e1ce414955be2f44bcb790";
+      let response = await fetch(
+        `https://api.themoviedb.org/3/movie/${movieId}?api_key=${api_key}&language=en-US`
+      );
+      let jsonData = await response.json();
+      setMovie(jsonData)
+    },[])
+
+    useEffect(()=>{
+      if(movieId){
+        getMovie(movieId)
+      }
+    },[movieId])
+
+
 
 
 
  const getVideos = async () => {
    let api_key = "8cc8bb5915e1ce414955be2f44bcb790";
    let response = await fetch(
-     ` https://api.themoviedb.org/3/movie/${movie.id}/videos?api_key=${api_key}&language=en-US`
+     ` https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${api_key}&language=en-US`
    );
    let jsonData = await response.json();
    setVideos((jsonData.results).slice(0,3))
@@ -24,7 +43,9 @@ export default function MoviePage() {
     getVideos();
   }, [movie]);
 
- 
+ if(!movie || !videos.length){
+  return <LinearProgress />
+ }
     return (
       <div
         id="homepage"

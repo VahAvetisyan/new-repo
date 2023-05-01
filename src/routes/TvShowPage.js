@@ -1,29 +1,48 @@
-import React, { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom';
+import React, { useCallback, useEffect, useState } from 'react'
+import { useLocation, useParams } from 'react-router-dom';
 import "./style/moviePage.css"
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import { LinearProgress } from '@mui/material';
 
 export default function MoviePage() {
-    const location = useLocation("/movie");
-    let [videos, setVideos] = useState([]);
+  const {tvId} = useParams()
+    const [videos, setVideos] = useState([]);
+    const [movie, setMovie] = useState(null);
 
- const movie = location.state.movie;
-console.log(location);
+    const getMovie = useCallback( async(mId)=>{
+      let api_key = "8cc8bb5915e1ce414955be2f44bcb790";
+      let response = await fetch(
+        `https://api.themoviedb.org/3/tv/${mId}?api_key=${api_key}&language=en-US`
+      );
+      let jsonData = await response.json();
+      setMovie(jsonData)
+    },[])
+
+    useEffect(()=>{
+      if(tvId){
+        getMovie(tvId)
+      }
+    },[tvId])
+
+
+
 
 
  const getVideos = async () => {
    let api_key = "8cc8bb5915e1ce414955be2f44bcb790";
    let response = await fetch(
-     `https://api.themoviedb.org/3/tv/${movie.id}/videos?api_key=${api_key}&language=en-US`
+     ` https://api.themoviedb.org/3/tv/${tvId}/videos?api_key=${api_key}&language=en-US`
    );
    let jsonData = await response.json();
-   console.log(jsonData)
    setVideos((jsonData.results).slice(0,3))
  };
  useEffect(() => {
     getVideos();
   }, [movie]);
 
+  if(!movie || !videos.length){
+    return <LinearProgress />
+   }
  
     return (
       <div
@@ -41,7 +60,7 @@ console.log(location);
             alt="movie"
           />
           <div id="info">
-            <h2>Name: {movie.name}</h2>
+            <h2>{movie.name}</h2>
             <h4>Release Date: {movie.first_air_date}</h4>
             <h5>Discription: {movie.overview}</h5>
             <div style={{display: "flex", alignItems: "center"}}>

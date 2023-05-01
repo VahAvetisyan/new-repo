@@ -18,8 +18,8 @@ const Home = () => {
     console.log(jsonData)
   };
   const handlerOnClick = () => {
-    navigate(`/movie/${movie.original_title}`,{state:{
-      movie: movie,
+    navigate(`/movie/${movie.id}`,{state:{
+      id: movie.id,
     }})
   }
 

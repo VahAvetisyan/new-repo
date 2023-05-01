@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./style/actors.css";
 import { useNavigate } from "react-router-dom";
 
-const MoviesTopRated = () => {
+const PopularTVShows = () => {
   let [movies, setActors] = useState([]);
   let [page, setPage] = useState(1);
   const navigate = useNavigate()
@@ -21,8 +21,8 @@ const MoviesTopRated = () => {
   }, [page]);
 
   
-  const handlerOnClick = (movie, name) => {
-    navigate(`/tv-show/${name}`,{state:{
+  const handlerOnClick = (movie, id) => {
+    navigate(`/tv-show/${id}`,{state:{
       movie: movie,
     }})
   }
@@ -33,7 +33,7 @@ const MoviesTopRated = () => {
       <h2>Popular TV Shows</h2>
       <div id="actors-imgs-container">
         {movies.map((movie) => (
-          <div key={movie.name} onClick={()=>{handlerOnClick(movie, movie.name)}}>
+          <div key={movie.name} onClick={()=>{handlerOnClick(movie, movie.id)}}>
             <img
               className="actors-img"
               key={movie.name}
@@ -65,4 +65,4 @@ const MoviesTopRated = () => {
   );
 };
 
-export default MoviesTopRated;
+export default PopularTVShows;

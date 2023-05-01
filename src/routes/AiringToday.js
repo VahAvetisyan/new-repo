@@ -3,9 +3,9 @@ import "./style/actors.css";
 import { useNavigate } from "react-router-dom";
 
 const AiringToday = () => {
+  const navigate = useNavigate()
   let [movies, setActors] = useState([]);
   let [page, setPage] = useState(1);
-  const navigate = useNavigate()
   const api_key = "8cc8bb5915e1ce414955be2f44bcb790";
 
   const logJSONData = async () => {
@@ -20,8 +20,8 @@ const AiringToday = () => {
     logJSONData();
   }, [page]);
 
-  const handlerOnClick = (movie, name) => {
-    navigate(`/tv-show/${name}`,{state:{
+  const handlerOnClick = (movie, id) => {
+    navigate(`/tv-show/${id}`,{state:{
       movie: movie,
     }})
   }
@@ -32,7 +32,7 @@ const AiringToday = () => {
       <h2>Airing Today</h2>
       <div id="actors-imgs-container">
         {movies.map((movie) => (
-          <div key={movie.name} onClick={()=>{handlerOnClick(movie, movie.name)}}>
+          <div key={movie.name} onClick={()=>{handlerOnClick(movie, movie.id)}}>
             <img
               className="actors-img"
               key={movie.name}

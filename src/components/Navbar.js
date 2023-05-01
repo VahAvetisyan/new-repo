@@ -56,7 +56,6 @@ const Navbar = (props) => {
               <a href="/sign-in">Sign In</a>
             </button>
             <a href="/sign-up">
-              {" "}
               <button>Sign Up</button>
             </a>
           </div>

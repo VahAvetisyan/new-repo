@@ -16,11 +16,12 @@ const MoviesNowPlaying = () => {
     let jsonData = await response.json();
     setActors(jsonData.results);
   };
-  const handlerOnClick = (movie, name) => {
-    navigate(`/movie/${name}`,{state:{
+    const handlerOnClick = (movie, id) => {
+    navigate(`/movie/${id}`,{state:{
       movie: movie,
     }})
   }
+
 
   useEffect(() => {
     logJSONData();
@@ -31,7 +32,7 @@ const MoviesNowPlaying = () => {
       <h2>Now Playing</h2>
       <div id="actors-imgs-container">
         {movies.map((movie) => (
-          <div key={movie.original_title} onClick={()=>{handlerOnClick(movie, movie.original_title)}}>
+          <div key={movie.original_title} onClick={()=>{handlerOnClick(movie, movie.id)}}>
             <img
               className="actors-img"
               key={movie.original_title}

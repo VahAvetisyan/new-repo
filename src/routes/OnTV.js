@@ -19,8 +19,8 @@ const OnTV = () => {
     logJSONData();
   }, [page]);
 
-  const handlerOnClick = (movie, name) => {
-    navigate(`/tv-show/${name}`,{state:{
+  const handlerOnClick = (movie, id) => {
+    navigate(`/tv-show/${id}`,{state:{
       movie: movie,
     }})
   }
@@ -30,7 +30,7 @@ const OnTV = () => {
       <h2>Now On TV</h2>
       <div id="actors-imgs-container">
         {movies.map((movie) => (
-          <div key={movie.name} onClick={()=>{handlerOnClick(movie, movie.name)}}>
+          <div key={movie.name} onClick={()=>{handlerOnClick(movie, movie.id)}}>
             <img
               className="actors-img"
               key={movie.name}

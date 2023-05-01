@@ -12,8 +12,8 @@ const MoviesNowPlaying = () => {
     setMovies(moviesArr);
   }, [moviesArr]);
 
-  const handlerOnClick = (movie, name) => {
-    navigate(`/movie/${name}`,{state:{
+  const handlerOnClick = (movie, id) => {
+    navigate(`/movie/${id}`,{state:{
       movie: movie,
     }})
   }
@@ -25,7 +25,7 @@ const MoviesNowPlaying = () => {
       <div id="actors-imgs-container">
         {movies.map((movie) =>
           movie.poster_path ? (
-            <div key={movie.original_title}  onClick={()=>{handlerOnClick(movie, movie.original_title)}}>
+            <div key={movie.original_title}  onClick={()=>{handlerOnClick(movie, movie.id)}}>
               <img
                 className="actors-img"
                 key={movie.original_title}
