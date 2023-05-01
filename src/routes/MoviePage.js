@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom';
 import "./style/moviePage.css"
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import MovieReviews from './Movie Comments and Rating/MovieReviews';
 
 export default function MoviePage() {
     const location = useLocation("/movie");
@@ -40,7 +41,7 @@ export default function MoviePage() {
             alt="movie"
           />
           <div id="info">
-            <h2>Name: {movie.title}</h2>
+            <h2>{movie.title}</h2>
             <h4>Release Date: {movie.release_date}</h4>
             <h5>Discription: {movie.overview}</h5>
             <div style={{display: "flex", alignItems: "center"}}>
@@ -69,9 +70,10 @@ export default function MoviePage() {
       <div className='video'>
                 {videos.map((el) => (
                     <iframe key={el.key} width="400" height="250" src={`https://www.youtube.com/embed/${el.key}`} title="YouTube video player"
-                        frameBorder="0" allowfullscreen="allowfullscreen"></iframe>
+                        frameBorder="0" allowFullScreen="allowfullscreen"></iframe>
                 ))}
         </div>
+        <MovieReviews id={movie.id}/>
         </div>
     
         

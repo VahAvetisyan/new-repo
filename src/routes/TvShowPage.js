@@ -70,7 +70,7 @@ console.log(location);
       <div className='video'>
                 {videos.map((el) => (
                     <iframe key={el.key} width="400" height="250" src={`https://www.youtube.com/embed/${el.key}`} title="YouTube video player"
-                        frameBorder="0" allowfullscreen="allowfullscreen"></iframe>
+                        frameBorder="0" allowFullScreen="allowfullscreen"></iframe>
                 ))}
         </div>
         </div>

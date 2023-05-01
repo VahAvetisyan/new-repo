@@ -15,6 +15,7 @@ const Home = () => {
     );
     let jsonData = await response.json();
     setMovie(jsonData.results[0]);
+    console.log(jsonData)
   };
   const handlerOnClick = () => {
     navigate(`/movie/${movie.original_title}`,{state:{
@@ -42,7 +43,7 @@ const Home = () => {
           alt="movie"
         />
         <div id="info">
-          <h2>Name: {movie.title}</h2>
+          <h2>{movie.title}</h2>
           <h4>Release Date: {movie.release_date}</h4>
           <h5>Discription: {movie.overview}</h5>
           <div style={{display: "flex", alignItems: "center"}}>
