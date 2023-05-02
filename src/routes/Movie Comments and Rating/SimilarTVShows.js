@@ -3,7 +3,7 @@ import "../style/SimilarMovies.css"
 import { useNavigate } from "react-router-dom"
 import Slider from "react-slick"
 
-export default function SimilarMovies(props) {
+export default function SimilarTVShows(props) {
     const id=props.id
     const navigate = useNavigate()
     const [similarMovies, setSimilarMovies] = useState([])
@@ -12,7 +12,7 @@ export default function SimilarMovies(props) {
     const getSimilarMovies = async () => {
       let api_key = "8cc8bb5915e1ce414955be2f44bcb790"
       let response = await fetch(
-        `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${api_key}&language=en-US&page=1`
+        `https://api.themoviedb.org/3/tv/${id}/similar?api_key=${api_key}&language=en-US&page=1`
       )
       let jsonData = await response.json()
       console.log(jsonData);
@@ -24,7 +24,7 @@ export default function SimilarMovies(props) {
     }, [id])
 
     const handlerOnClick = (movie, id) => {
-        navigate(`/movie/${id}`, {
+        navigate(`/tv-show/${id}`, {
           state: {
             movie: movie
           }
@@ -39,7 +39,6 @@ export default function SimilarMovies(props) {
         autoplay: true,
         autoplaySpeed: 2000
       }
-
       if(!similarMovies.length){
         return null
       }
