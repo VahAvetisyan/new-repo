@@ -9,10 +9,10 @@ const Root = styled("div")(({ theme }) => ({
     backgroundColor: red[500],
   },
   [theme.breakpoints.up("md")]: {
-    backgroundColor: blue[500],
+    width: blue[500],
   },
   [theme.breakpoints.up("lg")]: {
-    backgroundColor: green[500],
+    border: green[900],
   },
 }));
 

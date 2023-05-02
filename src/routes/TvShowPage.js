@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom';
 import "./style/moviePage.css"
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
-
+import "./style/responsive.css";
 export default function MoviePage() {
     const location = useLocation("/movie");
     let [videos, setVideos] = useState([]);

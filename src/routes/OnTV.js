@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./style/actors.css";
 import { useNavigate } from "react-router-dom";
-
+import "./style/responsive.css";
 const OnTV = () => {
   let [movies, setActors] = useState([]);
   let [page, setPage] = useState(1);
@@ -32,7 +32,7 @@ const OnTV = () => {
         {movies.map((movie) => (
           <div key={movie.name} onClick={()=>{handlerOnClick(movie, movie.name)}}>
             <img
-              className="actors-img"
+              className="img"
               key={movie.name}
               src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
               alt="actor"
