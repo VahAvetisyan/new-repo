@@ -25,7 +25,7 @@ import ProfilePage from "./routes/ProfilePage";
 import Watchlist from "./routes/Watchlist";
 import Terms from "./sign in/Terms";
 import SimpleSnackbar from "./components/SnackBar";
-
+import MediaQuery from "./components/Responsive";
 const App = () => {
   const loggedInUser = useSelector(selectLoggedInUser);
   const dispatch = useDispatch();
@@ -39,7 +39,7 @@ const App = () => {
 
   return (
     <>
-    <SimpleSnackbar />
+      <SimpleSnackbar />
       <Routes>
         {loggedInUser ? (
           <Route path="/" element={<Layout isLoggedInUser={loggedInUser} />}>
@@ -87,6 +87,7 @@ const App = () => {
           </Route>
         )}
       </Routes>
+      <MediaQuery />
     </>
   );
 };
