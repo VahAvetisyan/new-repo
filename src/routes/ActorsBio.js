@@ -5,7 +5,7 @@ import "./style/actorBio.css";
 export default function ActorsBio() {
   const location = useLocation("/people");
   const [actorBio, setActorBio] = useState({})
-
+const a=1
   const navigate = useNavigate()
 
   const actor = location.state.actor;
