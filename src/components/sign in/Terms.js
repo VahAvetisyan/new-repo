@@ -6,7 +6,7 @@ export default function () {
     <div id='terms'>
     <h3>General rules on the site and</h3>
     <h4>General rules of conduct on the site:</h4><br/>
-    
+     
     <div> Let's start with the fact that hundreds of people of different religions and 
         views communicate on the site, and all of them are full visitors to our site, 
         so if we want this community of people to function, we need rules. We strongly 
