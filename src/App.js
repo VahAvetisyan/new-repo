@@ -51,7 +51,7 @@ const App = () => {
             <Route path="tv-shows/popular" element={<PopularTVShows />} />
             <Route path="movie/:movieId" element={<MoviePage />} />
             <Route path="tv-show/:tvId" element={<TvShowPage />} />
-            <Route path="people/*" element={<ActorsBio />} />
+            <Route path="people/:actorId" element={<ActorsBio />} />
             <Route path="tv-shows/airing-today" element={<AiringToday />} />
             <Route path="tv-shows/on-tv" element={<OnTV />} />
             <Route path="tv-shows/top-rated" element={<TopRatedTVShows />} />

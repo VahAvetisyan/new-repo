@@ -22,7 +22,7 @@ export default function MovieReviews(props) {
     setReview(jsonData.results);
   };
 
- addComments = review;
+
 
   const HandlerOnAddBtnClick = () => {
     if(newComment){
@@ -40,7 +40,7 @@ export default function MovieReviews(props) {
       dispatch(
         setSnackBarData({
           open: true,
-          message: "Comment added",
+          message: "Comment successfully added",
           severity: "success",
         })
       );
@@ -55,9 +55,10 @@ export default function MovieReviews(props) {
     }
     
   }
-
+  
   useEffect(()=>{
     HandlerOnAddBtnClick()
+    addComments = review;
   },[])
 
   useEffect(() => {

@@ -22,16 +22,16 @@
 
 .imgslider {
   border-radius: 10px;
-  background-color: rgba(36, 36, 36, 0.788);
+  /* background-color: rgba(36, 36, 36, 0.788); */
 }
 #imgs-container {
   height: 100%;
 }
 
 #nested-imgs-container {
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   height: 350px;
-  background-color: rgba(255, 255, 255, 0);
+  /* background-color: rgba(255, 255, 255, 0); */
   border-radius: 10px;
   margin: 30px;
   padding: 20px;

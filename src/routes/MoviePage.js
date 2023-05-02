@@ -2,9 +2,10 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./style/moviePage.css";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
-import MovieReviews from "./Movie Comments and Rating/MovieReviews";
+import MovieReviews from "./MoviePageAttributes/MovieReviews";
 import { LinearProgress } from "@mui/material";
-import SimilarMovies from "./Movie Comments and Rating/SimilarMovies";
+import SimilarMovies from "./MoviePageAttributes/SimilarMovies";
+import MoviesCasts from "./MoviePageAttributes/MoviesCasts";
 
 export default function MoviePage() {
   const { movieId } = useParams();
@@ -18,7 +19,7 @@ export default function MoviePage() {
     );
     let jsonData = await response.json();
     setMovie(jsonData);
-  }, []);
+  }, [movieId]);
 
   useEffect(() => {
     if (movieId) {
@@ -66,7 +67,7 @@ export default function MoviePage() {
                 value={movie.vote_average * 10}
                 text={
                   <tspan dy={5} dx={-22}>
-                    {movie.vote_average * 10}%
+                    {Math.floor(movie.vote_average * 10)}%
                   </tspan>
                 }
                 styles={buildStyles({
@@ -85,6 +86,7 @@ export default function MoviePage() {
           </div>
         </div>
       </div>
+      <MoviesCasts id={movie.id}/>
       <div className="video">
         {videos.map((el) => (
           <iframe

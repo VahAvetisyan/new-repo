@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import "../style/SimilarMovies.css"
 import { useNavigate } from "react-router-dom"
 import Slider from "react-slick"
+import { LinearProgress } from "@mui/material"
 
 export default function SimilarTVShows(props) {
     const id=props.id
@@ -40,7 +41,7 @@ export default function SimilarTVShows(props) {
         autoplaySpeed: 2000
       }
       if(!similarMovies.length){
-        return null
+        return <LinearProgress />;
       }
     
 
@@ -54,6 +55,7 @@ export default function SimilarTVShows(props) {
       <div className='imgslider'>
         <Slider {...settings}>
           {similarMovies.map((movie) => (
+             movie.poster_path ? (
             <div key={movie.id} id='imgs-container'>
               <div
                 key={movie.original_title}
@@ -68,7 +70,7 @@ export default function SimilarTVShows(props) {
                   alt='actor'
                 />
               </div>
-            </div>
+            </div>): null
           ))}
         </Slider>
       </div>

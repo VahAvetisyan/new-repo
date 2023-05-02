@@ -24,8 +24,8 @@ export default function ActorsBio() {
     getActorInfo()
   }, [actor])
 
-  const handlerOnClick = (movie, name) => {
-    navigate(`/movie/${name}`, {
+  const handlerOnClick = (movie, id) => {
+    navigate(`/movie/${id}`, {
       state: {
         movie: movie
       }
@@ -58,7 +58,7 @@ export default function ActorsBio() {
           <div
             key={movie.id}
             onClick={() => {
-              handlerOnClick(movie, movie.original_title)
+              handlerOnClick(movie, movie.id)
             }}
           >
             <img

@@ -49,6 +49,7 @@ const ImageSlider = () => {
       <div className='imgslider'>
         <Slider {...settings}>
           {movie.map((movie) => (
+             movie.poster_path ? (
             <div key={movie.id} id='imgs-container'>
               <div
                 key={movie.original_title}
@@ -62,8 +63,9 @@ const ImageSlider = () => {
                   src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
                   alt='actor'
                 />
+                <h5 style={{color: 'white'}}>{movie.original_title}</h5>
               </div>
-            </div>
+            </div>):null
           ))}
         </Slider>
       </div>

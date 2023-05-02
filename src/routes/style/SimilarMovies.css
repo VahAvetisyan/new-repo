@@ -16,13 +16,11 @@
 
 .slick-slide img {
   border-radius: 10px;
-  margin: auto;
   width: 100%;
 }
 
 .imgslider {
   border-radius: 10px;
-  background-color: rgba(36, 36, 36, 0.788);
   margin-bottom: 50px;
 }
 #imgs-container {
@@ -32,7 +30,6 @@
 #nested-imgs-container {
   color: rgb(0, 0, 0);
   height: 350px;
-  background-color: rgba(255, 255, 255, 0);
   border-radius: 10px;
   margin: 30px;
   padding: 20px;
