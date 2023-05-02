@@ -3,6 +3,7 @@ import { useLocation, useParams } from 'react-router-dom';
 import "./style/moviePage.css"
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import { LinearProgress } from '@mui/material';
+import TvShowsReviews from './Movie Comments and Rating/TvShowsReviews';
 
 export default function MoviePage() {
   const {tvId} = useParams()
@@ -23,10 +24,6 @@ export default function MoviePage() {
         getMovie(tvId)
       }
     },[tvId])
-
-
-
-
 
  const getVideos = async () => {
    let api_key = "8cc8bb5915e1ce414955be2f44bcb790";
@@ -91,6 +88,10 @@ export default function MoviePage() {
                     <iframe key={el.key} width="400" height="250" src={`https://www.youtube.com/embed/${el.key}`} title="YouTube video player"
                         frameBorder="0" allowFullScreen="allowfullscreen"></iframe>
                 ))}
+        </div>
+
+        <div>
+        <TvShowsReviews id={movie.id}/>
         </div>
         </div>
     

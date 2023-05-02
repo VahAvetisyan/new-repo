@@ -4,14 +4,14 @@ import "./style/moviePage.css"
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import MovieReviews from './Movie Comments and Rating/MovieReviews';
 import { CircularProgress, LinearProgress } from '@mui/material';
+import SimilarMovies from './Movie Comments and Rating/SimilarMovies';
 
 export default function MoviePage() {
   const {movieId} = useParams()
-    const location = useLocation("/movie");
     const [videos, setVideos] = useState([]);
     const [movie, setMovie] = useState({});
 
-    const getMovie = useCallback( async(mId)=>{
+    const getMovie = useCallback( async()=>{
       let api_key = "8cc8bb5915e1ce414955be2f44bcb790";
       let response = await fetch(
         `https://api.themoviedb.org/3/movie/${movieId}?api_key=${api_key}&language=en-US`
@@ -92,6 +92,9 @@ export default function MoviePage() {
                     <iframe key={el.key} width="400" height="250" src={`https://www.youtube.com/embed/${el.key}`} title="YouTube video player"
                         frameBorder="0" allowFullScreen="allowfullscreen"></iframe>
                 ))}
+        </div>
+        <div>
+          <SimilarMovies id={movie.id}/>
         </div>
         <MovieReviews id={movie.id}/>
         </div>

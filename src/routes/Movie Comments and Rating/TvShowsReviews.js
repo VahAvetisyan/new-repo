@@ -16,7 +16,7 @@ export default function MovieReviews(props) {
   const getVideos = async () => {
     let api_key = "8cc8bb5915e1ce414955be2f44bcb790";
     let response = await fetch(
-      `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${api_key}&language=en-US&page=1`
+      `https://api.themoviedb.org/3/tv/${id}/reviews?api_key=${api_key}&language=en-US&page=1`
     );
     let jsonData = await response.json();
     setReview(jsonData.results);
