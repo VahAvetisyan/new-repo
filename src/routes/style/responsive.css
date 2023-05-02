@@ -3,7 +3,7 @@
     display: grid;
     grid-template-columns:repeat(3,250px);
     justify-content: space-between;
-
+  /* a */
   }
 
 }
