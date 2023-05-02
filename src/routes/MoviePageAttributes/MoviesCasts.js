@@ -11,10 +11,9 @@ export default function Casts(props) {
     const GetCredits = async () => {
       let api_key = "8cc8bb5915e1ce414955be2f44bcb790"
       let response = await fetch(
-        `https://api.themoviedb.org/3/movie/${id}/credits?api_key=8cc8bb5915e1ce414955be2f44bcb790&language=en-US`
+        `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${api_key}&language=en-US`
       )
       let jsonData = await response.json()
-      console.log(jsonData);
       setCasts((jsonData.cast).slice(0, 15))
     }
   
