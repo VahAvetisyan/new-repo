@@ -74,7 +74,7 @@ export default function MovieReviews(props) {
     <div id="comments">
      
       {addComments.map((comment) => (
-      <div className="comment-content">
+      <div key={comment.content} className="comment-content">
         <div className="author">
         <Avatar variant="circular" sx={{ width: 45, height: 45 }} alt={comment.author} src={comment.author_details.avatar_path?(comment.author_details.avatar_path).slice(1):null} />
         <h4>{comment.author}</h4>

@@ -7,10 +7,9 @@ import { CircularProgress, LinearProgress } from '@mui/material';
 
 export default function MoviePage() {
   const {movieId} = useParams()
-  console.log(movieId);
     const location = useLocation("/movie");
     const [videos, setVideos] = useState([]);
-    const [movie, setMovie] = useState(null);
+    const [movie, setMovie] = useState({});
 
     const getMovie = useCallback( async(mId)=>{
       let api_key = "8cc8bb5915e1ce414955be2f44bcb790";

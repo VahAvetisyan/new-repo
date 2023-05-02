@@ -15,7 +15,6 @@ const Home = () => {
     );
     let jsonData = await response.json();
     setMovie(jsonData.results[0]);
-    console.log(jsonData)
   };
   const handlerOnClick = () => {
     navigate(`/movie/${movie.id}`,{state:{

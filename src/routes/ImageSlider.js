@@ -58,7 +58,6 @@ const ImageSlider = () => {
                 }}
               >
                 <img
-                  xmndcnsdmncsndc
                   key={movie.original_title}
                   src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
                   alt='actor'
