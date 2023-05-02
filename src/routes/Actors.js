@@ -20,7 +20,7 @@ const Actors = () => {
       actor: actor,
     }})
   }
-
+  
 
   useEffect(() => {
     logJSONData();
