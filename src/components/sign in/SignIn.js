@@ -30,7 +30,7 @@ export default function SignIn() {
         event.preventDefault();
         try {
             const userCred = await signInWithEmailAndPassword(auth, email, password);
-            console.log(userCred);
+           
             navigate('/');
         } catch (error) {
             console.log(error.message);

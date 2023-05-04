@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./style/actors.css";
 import { useNavigate } from "react-router-dom";
+import { linkClasses } from "@mui/material";
+import "./style/responsive.css";
+
+
 
 const Actors = () => {
   const navigate = useNavigate()

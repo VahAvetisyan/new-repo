@@ -36,7 +36,8 @@ const App = () => {
       dispatch(setUser(u?.email));
     });
   }, []);
-
+localStorage.setItem('hello','world')
+ console.log(localStorage.getItem('hello'))
   return (
     <>
     <SimpleSnackbar />

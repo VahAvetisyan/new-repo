@@ -8,7 +8,7 @@ import {useNavigate} from "react-router-dom"
 const ImageSlider = () => {
   const navigate = useNavigate()
   let [movie, setMovie] = useState([])
-
+  let [imageSlidersCount, setSlidersCount] = useState(5)
   const logJSONData = async () => {
     let api_key = "8cc8bb5915e1ce414955be2f44bcb790"
     let response = await fetch(
@@ -25,6 +25,13 @@ const ImageSlider = () => {
       }
     })
   }
+  useEffect(() => {
+    if (window.innerWidth <= 1445) {
+      return setSlidersCount(3)
+    } else {
+      return setSlidersCount(5)
+    }
+  }, [imageSlidersCount])
 
   useEffect(() => {
     logJSONData()
@@ -32,7 +39,7 @@ const ImageSlider = () => {
 
   const settings = {
     infinite: true,
-    slidesToShow: 5,
+    slidesToShow: imageSlidersCount,
     slidesToScroll: 1,
     lazyLoad: true,
     autoplay: true,
@@ -48,25 +55,26 @@ const ImageSlider = () => {
       </div>
       <div className='imgslider'>
         <Slider {...settings}>
-          {movie.map((movie) => (
-             movie.poster_path ? (
-            <div key={movie.id} id='imgs-container'>
-              <div
-                key={movie.original_title}
-                id='nested-imgs-container'
-                onClick={() => {
-                  handlerOnClick(movie, movie.id)
-                }}
-              >
-                <img
+          {movie.map((movie) =>
+            movie.poster_path ? (
+              <div key={movie.id} id='imgs-container'>
+                <div
                   key={movie.original_title}
-                  src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-                  alt='actor'
-                />
-                <h5 style={{color: 'white'}}>{movie.original_title}</h5>
+                  id='nested-imgs-container'
+                  onClick={() => {
+                    handlerOnClick(movie, movie.id)
+                  }}
+                >
+                  <img
+                    key={movie.original_title}
+                    src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                    alt='actor'
+                  />
+                  <h5 style={{color: "white"}}>{movie.original_title}</h5>
+                </div>
               </div>
-            </div>):null
-          ))}
+            ) : null
+          )}
         </Slider>
       </div>
     </>
