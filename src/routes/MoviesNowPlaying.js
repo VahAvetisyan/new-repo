@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./style/actors.css";
 import { useNavigate } from "react-router-dom";
-
+import "./style/responsive.css";
 const MoviesNowPlaying = () => {
   const navigate = useNavigate()
   let [movies, setActors] = useState([]);

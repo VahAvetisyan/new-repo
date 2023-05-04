@@ -15,6 +15,7 @@ export default function Search() {
     );
     let jsonData = await response.json();
     setSearchResult(jsonData.results);
+    console.log(searchResult)
   };
   useEffect(() => {
     getSearchResult();
