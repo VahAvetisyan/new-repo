@@ -6,7 +6,7 @@ const MoviesPopular = () => {
   const navigate = useNavigate()
   let [movies, setActors] = useState([]);
   let [page, setPage] = useState(1);
-
+  
   const logJSONData = async () => {
     let response = await fetch(
       `https://api.themoviedb.org/3/movie/popular?api_key=8cc8bb5915e1ce414955be2f44bcb790&language=en-US&page=${page}`

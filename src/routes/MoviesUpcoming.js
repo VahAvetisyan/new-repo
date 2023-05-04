@@ -6,9 +6,9 @@ const MoviesUpcoming = () => {
   const navigate = useNavigate()
   let [movies, setActors] = useState([]);
   let [page, setPage] = useState(1);
-  const api_key = "8cc8bb5915e1ce414955be2f44bcb790";
-
+  
   const logJSONData = async () => {
+    const api_key = "8cc8bb5915e1ce414955be2f44bcb790";
     let response = await fetch(
       `https://api.themoviedb.org/3/movie/upcoming?api_key=${api_key}&language=en-US&page=${page}`
     );

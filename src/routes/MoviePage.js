@@ -11,13 +11,17 @@ export default function MoviePage() {
   const { movieId } = useParams();
   const [videos, setVideos] = useState([]);
   const [movie, setMovie] = useState({});
+  const [movieLoading, setMovieLoading] = useState(false)
+  const [videoLoading, setVideoLoading] = useState(false)
 
   const getMovie = useCallback(async () => {
     let api_key = "8cc8bb5915e1ce414955be2f44bcb790";
+    setMovieLoading(true)
     let response = await fetch(
       `https://api.themoviedb.org/3/movie/${movieId}?api_key=${api_key}&language=en-US`
     );
     let jsonData = await response.json();
+    setMovieLoading(false)
     setMovie(jsonData);
   }, [movieId]);
 
@@ -29,19 +33,27 @@ export default function MoviePage() {
 
   const getVideos = async () => {
     let api_key = "8cc8bb5915e1ce414955be2f44bcb790";
+    setVideoLoading(true)
     let response = await fetch(
       ` https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${api_key}&language=en-US`
     );
     let jsonData = await response.json();
+    setVideoLoading(false)
     setVideos(jsonData.results.slice(0, 3));
   };
   useEffect(() => {
     getVideos();
   }, [movie]);
 
-  if (!movie || !videos.length) {
-    return <LinearProgress />;
+
+  if(movieLoading || videoLoading){
+    return <LinearProgress />
   }
+
+  if (!movie) {
+    return <h1>Nothing to Show</h1>;
+  }
+
   return (
     <div
       id="homepage"
