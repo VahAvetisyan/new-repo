@@ -2,8 +2,10 @@ import React, {useEffect, useState} from "react"
 import "../routes/style/actors.css"
 import {useNavigate} from "react-router-dom"
 import "../routes/style/responsive.css"
+import MOVIES_API_KEY from "../constants/common"
 
 const SharedMovies = (props) => {
+  console.log(MOVIES_API_KEY)
   const type = props.type
   const navigate = useNavigate()
   let [movies, setActors] = useState([])
