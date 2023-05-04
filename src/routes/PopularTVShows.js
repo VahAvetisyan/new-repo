@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./style/actors.css";
 import { useNavigate } from "react-router-dom";
-
+import "./style/responsive.css"
 const PopularTVShows = () => {
   let [movies, setActors] = useState([]);
   let [page, setPage] = useState(1);
