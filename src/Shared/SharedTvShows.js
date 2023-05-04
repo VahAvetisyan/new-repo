@@ -2,19 +2,21 @@ import React, {useEffect, useState} from "react"
 import "../routes/style/actors.css"
 import {useNavigate} from "react-router-dom"
 import "../routes/style/responsive.css"
+import MOVIES_API_KEY from "../constants/common"
+
 
 const SharedTvShows = (props) => {
   const type = props.type
   const navigate = useNavigate()
-  let [movies, setActors] = useState([])
+  let [movies, setMovie] = useState([])
   let [page, setPage] = useState(1)
 
   const logJSONData = async () => {
     let response = await fetch(
-      `https://api.themoviedb.org/3/tv/${type}?api_key=8cc8bb5915e1ce414955be2f44bcb790&language=en-US&page=${page}`
+      `https://api.themoviedb.org/3/tv/${type}?api_key=${MOVIES_API_KEY}&language=en-US&page=${page}`
     )
     let jsonData = await response.json()
-    setActors(jsonData.results)
+    setMovie(jsonData.results)
   }
 
   useEffect(() => {
@@ -22,7 +24,7 @@ const SharedTvShows = (props) => {
   }, [page])
 
   const handlerOnClick = (movie, id) => {
-    navigate(`/movie/${id}`, {
+    navigate(`/tv-show/${id}`, {
       state: {
         movie: movie
       }

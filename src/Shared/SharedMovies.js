@@ -13,7 +13,7 @@ const SharedMovies = (props) => {
 
   const logJSONData = async () => {
     let response = await fetch(
-      `https://api.themoviedb.org/3/movie/${type}?api_key=8cc8bb5915e1ce414955be2f44bcb790&language=en-US&page=${page}`
+      `https://api.themoviedb.org/3/movie/${type}?api_key=${MOVIES_API_KEY}&language=en-US&page=${page}`
     )
     let jsonData = await response.json()
     setActors(jsonData.results)
