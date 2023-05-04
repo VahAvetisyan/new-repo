@@ -132,7 +132,7 @@ button span {
   font-size: 16px;
   border-radius: 5px;
   padding-left: 10px;
-  width: 250px;
+  width: 200px;
   height: 40px;
   justify-self: flex-end;
   border: none;
@@ -154,12 +154,12 @@ button span {
 button {
   border: none;
 }
-.signInSignUpButtons{
+.signInSignUpButtons {
   display: flex;
   align-items: center;
 }
 
-.signInSignUpButtons button{
+.signInSignUpButtons button {
   text-align: center;
   color: rgb(255, 255, 255);
   font-size: 16px;
@@ -174,7 +174,7 @@ button {
   background-color: #4d4d4d;
 }
 
-.signInSignUpButtons button a{
+.signInSignUpButtons button a {
   color: white;
   text-decoration: none;
 }
