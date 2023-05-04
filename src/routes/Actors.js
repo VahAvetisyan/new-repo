@@ -16,8 +16,8 @@ const Actors = () => {
     setActors(jsonData.results);
   };
 
-  const handlerOnClick = (actor, name) => {
-    navigate(`/people/${name}`,{state:{
+  const handlerOnClick = (actor, id) => {
+    navigate(`/people/${id}`,{state:{
       actor: actor,
     }})
   }
@@ -32,7 +32,7 @@ const Actors = () => {
       <h2>Popular People</h2>
       <div id="actors-imgs-container">
         {actors.map((actor) => (
-          <div key={actor.name} onClick={()=>{handlerOnClick(actor, actor.name)}}>
+          <div key={actor.name} onClick={()=>{handlerOnClick(actor, actor.id)}}>
             <img
               className="actors-img"
               key={actor.name}

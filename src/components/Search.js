@@ -14,6 +14,7 @@ export default function Search() {
       `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&language=en-US&query=${searchValue}&page=1&include_adult=false`
     );
     let jsonData = await response.json();
+    setSearchResult([])
     setSearchResult(jsonData.results);
     console.log(searchResult)
   };

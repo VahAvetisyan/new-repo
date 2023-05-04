@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom";
 import "./style/moviePage.css";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import { LinearProgress } from "@mui/material";
-import TvShowsReviews from "./Movie Comments and Rating/TvShowsReviews";
-import SimilarTVShows from "./Movie Comments and Rating/SimilarTVShows";
+import TvShowsReviews from "./MoviePageAttributes/TvShowsReviews";
+import SimilarTVShows from "./MoviePageAttributes/SimilarTVShows";
 
 export default function MoviePage() {
   const { tvId } = useParams();
@@ -67,7 +67,7 @@ export default function MoviePage() {
                 value={movie.vote_average * 10}
                 text={
                   <tspan dy={5} dx={-22}>
-                    {movie.vote_average * 10}%
+                    {Math.floor(movie.vote_average * 10)}%
                   </tspan>
                 }
                 styles={buildStyles({

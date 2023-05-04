@@ -1,26 +1,27 @@
 .Profile {
     display: flex;
-    flex-direction: column;
+    
 }
 
 #profile-picture{
-    width: 250px;
+    width: 270px;
     height: 350px;
     margin: 20px;
     border-radius: 10px;
     overflow: hidden;
     object-fit: cover;
+    border: 2px solid white;
 }
 
 input{
     margin-left: 20px;
-    width: 300px;
+    width: 270px;
     color: white
 }
 
 #upload-button{
     border-radius: 10px;
-    width: 300px;
+    width: 270px;
     height: 50px;
     font-size: large;
     margin-left: 20px;
@@ -29,5 +30,6 @@ input{
 
 #profile-page{
     display: flex;
+    flex-direction: column;
 }
 

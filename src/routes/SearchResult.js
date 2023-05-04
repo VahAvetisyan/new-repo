@@ -8,6 +8,8 @@ const MoviesNowPlaying = () => {
   const location = useLocation("search-result");
   let moviesArr = location.state.movies;
 
+
+
   useEffect(() => {
     setMovies(moviesArr);
   }, [moviesArr]);
@@ -34,17 +36,7 @@ const MoviesNowPlaying = () => {
               />
               <h3>{movie.title}</h3>
             </div>
-          ) : (
-            <div>
-              <img
-                className="actors-img"
-                key={movie.original_title}
-                src={`https://static.vecteezy.com/system/resources/previews/010/191/968/non_2x/error-404-icon-isolated-contour-symbol-illustration-vector.jpg`}
-                alt="404 Image Not Found"
-              />
-              <h3>{movie.title}</h3>
-            </div>
-          )
+          ) : null
         )}
       </div>
     </div>
