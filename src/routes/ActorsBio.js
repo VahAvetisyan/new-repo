@@ -5,10 +5,12 @@ import "./style/actorBio.css"
 export default function ActorsBio() {
   const location = useLocation("/people")
   const [actorBio, setActorBio] = useState({})
+  console.log(actorBio)
 
   const navigate = useNavigate()
 
   const actor = location.state.actor
+  console.log(actor)
   const knownFor = actor.known_for
 
   const getActorInfo = async () => {
@@ -19,7 +21,6 @@ export default function ActorsBio() {
     let jsonData = await response.json()
     setActorBio(jsonData)
   }
-
   useEffect(() => {
     getActorInfo()
   }, [actor])
@@ -54,7 +55,7 @@ export default function ActorsBio() {
         </div>
       </div>
       <div className='img-div'>
-        {knownFor.map((movie) => (
+        {knownFor?.map((movie) => (
           <div
             key={movie.id}
             onClick={() => {
