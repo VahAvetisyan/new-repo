@@ -4,7 +4,6 @@ import {useNavigate} from "react-router-dom"
 import "../routes/style/responsive.css"
 import MOVIES_API_KEY from "../constants/common"
 
-
 const SharedTvShows = (props) => {
   const type = props.type
   const navigate = useNavigate()
@@ -37,7 +36,7 @@ const SharedTvShows = (props) => {
       <div id='actors-imgs-container'>
         {movies.map((movie) => (
           <div
-            key={movie.original_title}
+            key={movie.id}
             onClick={() => {
               handlerOnClick(movie, movie.id)
             }}

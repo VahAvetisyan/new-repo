@@ -5,7 +5,6 @@ import "../routes/style/responsive.css"
 import MOVIES_API_KEY from "../constants/common"
 
 const SharedMovies = (props) => {
-  console.log(MOVIES_API_KEY)
   const type = props.type
   const navigate = useNavigate()
   let [movies, setActors] = useState([])
@@ -37,7 +36,7 @@ const SharedMovies = (props) => {
       <div id='actors-imgs-container'>
         {movies.map((movie) => (
           <div
-            key={movie.original_title}
+            key={movie.id}
             onClick={() => {
               handlerOnClick(movie, movie.id)
             }}
