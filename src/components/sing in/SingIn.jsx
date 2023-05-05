@@ -1,19 +1,19 @@
 import { useState } from "react"
 import "./singIn.css"
-  import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { auth } from "../../firebase/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { setSnackBarData } from "../../redux/reducers/snackBarReducer";
 import { signInWithEmailAndPassword } from "firebase/auth";
+
   function  Registration (){
-    let a=1
     let [password,setPassword]=useState();
     let [mail,setMail]=useState();
     let [username,setUsername]=useState();
     let navigate=useNavigate();
-let dispatch=useDispatch()
-const SingUp = async (event) => {
+    let dispatch=useDispatch()
+    const SingUp = async (event) => {
     event.preventDefault();
     try {
       await createUserWithEmailAndPassword(auth, mail, password,username);
@@ -55,7 +55,7 @@ const SingUp = async (event) => {
 					<input type="text" name="txt" placeholder="User name" required="" onChange={(e)=>{setUsername(e.target.value)}}></input>
 					<input type="email" name="email" placeholder="Email" required="" onChange={(e)=>{setMail(e.target.value)}}></input>
 					<input type="password" name="pswd" placeholder="Password" required="" onChange={(e)=>{setPassword(e.target.value)}}></input>
-					<button  onClick={SingUp}>Sign up</button>
+					<button className="SignIn-Button" onClick={SingUp}>Sign up</button>
 				</form>
 			</div>
 
@@ -64,7 +64,7 @@ const SingUp = async (event) => {
 					<label for="chk" aria-hidden="true"  onChange={(e)=>{setUsername(e.target.value)}}>Login</label>
 					<input type="email" name="email" placeholder="Email" required="" onChange={(e)=>{setMail(e.target.value)}}></input>
 					<input type="password" name="pswd" placeholder="Password" required="" onChange={(e)=>{setPassword(e.target.value)}}></input>
-					<button onClick={SingIn}>Login</button>
+					<button className="SignIn-Button"  onClick={SingIn}>Login</button>
 				</form>
 			</div>
 
