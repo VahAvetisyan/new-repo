@@ -5,6 +5,7 @@ import "../routes/style/responsive.css"
 import MOVIES_API_KEY from "../constants/common"
 
 const SharedMovies = (props) => {
+
   const type = props.type
   const navigate = useNavigate()
   let [movies, setActors] = useState([])
