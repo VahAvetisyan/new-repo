@@ -2,8 +2,10 @@ import {useEffect, useState} from "react"
 import "../style/SimilarMovies.css"
 import Slider from "react-slick"
 import {LinearProgress} from "@mui/material"
+import {useNavigate} from "react-router-dom"
 
 export default function Casts(props) {
+  const navigate = useNavigate()
   const id = props.id
   const [casts, setCasts] = useState([])
 
@@ -20,6 +22,13 @@ export default function Casts(props) {
     GetCredits()
   }, [id])
 
+  function handleClick(actor, id) {
+    navigate(`/people/${id}`, {
+      state: {
+        actor: actor
+      }
+    })
+  }
   const settings = {
     infinite: false,
     slidesToShow: window.innerWidth <= 1445 ? 3 : 5,
@@ -42,7 +51,13 @@ export default function Casts(props) {
         <Slider {...settings}>
           {casts.map((cast) =>
             cast.profile_path ? (
-              <div key={cast.id} id='imgs-container'>
+              <div
+                key={cast.id}
+                id='imgs-container'
+                onClick={() => {
+                  handleClick(cast, cast.id)
+                }}
+              >
                 <div key={cast.name} id='nested-imgs-container'>
                   <img
                     key={cast.name}
