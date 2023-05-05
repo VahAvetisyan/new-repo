@@ -8,7 +8,7 @@ import {useNavigate} from "react-router-dom"
 const ImageSlider = () => {
   const navigate = useNavigate()
   let [movie, setMovie] = useState([])
-  let [imageSlidersCount, setSlidersCount] = useState(5)
+  let [width, setWidth] = useState(5)
   const logJSONData = async () => {
     let api_key = "8cc8bb5915e1ce414955be2f44bcb790"
     let response = await fetch(
@@ -25,13 +25,15 @@ const ImageSlider = () => {
       }
     })
   }
-  useEffect(() => {
-    if (window.innerWidth <= 1445) {
-      return setSlidersCount(3)
+
+  window.addEventListener("resize", ()=>{
+    if (window.innerWidth <= 1400) {
+      setWidth(3)
     } else {
-      return setSlidersCount(5)
+      setWidth(5)
     }
-  }, [imageSlidersCount])
+  })
+
 
   useEffect(() => {
     logJSONData()
@@ -39,7 +41,7 @@ const ImageSlider = () => {
 
   const settings = {
     infinite: true,
-    slidesToShow: imageSlidersCount,
+    slidesToShow: width,
     slidesToScroll: 1,
     lazyLoad: true,
     autoplay: true,

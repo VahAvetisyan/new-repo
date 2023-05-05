@@ -5,13 +5,16 @@ import "./style/actorBio.css"
 export default function ActorsBio() {
   const location = useLocation("/people")
   const [actorBio, setActorBio] = useState({})
-  console.log(actorBio)
+  
 
   const navigate = useNavigate()
 
   const actor = location.state.actor
-  console.log(actor)
+  console.log("actor",location.state.actor);
   const knownFor = actor.known_for
+  console.log("actor 2",actor);
+
+  console.log("Bio",actorBio);
 
   const getActorInfo = async () => {
     let api_key = "8cc8bb5915e1ce414955be2f44bcb790"
@@ -54,23 +57,27 @@ export default function ActorsBio() {
           {actorBio.biography ? <h5>Biography: {actorBio.biography}</h5> : null}
         </div>
       </div>
+      {knownFor? 
       <div className='img-div'>
-        {knownFor?.map((movie) => (
-          <div
-            key={movie.id}
-            onClick={() => {
-              handlerOnClick(movie, movie.id)
-            }}
-          >
-            <img
-              key={movie.original_title}
-              src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-              alt='actor-img'
-            />
-            <h3>{movie.original_title}</h3>
-          </div>
-        ))}
-      </div>
+      
+      {knownFor?.map((movie) => (
+        <div
+          key={movie.id}
+          onClick={() => {
+            handlerOnClick(movie, movie.id)
+          }}
+        >
+          <img
+            key={movie.original_title}
+            src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+            alt='actor-img'
+          />
+          <h3>{movie.original_title}</h3>
+        </div>
+      ))}
+    </div>:
+    null}
+      
     </>
   )
 }

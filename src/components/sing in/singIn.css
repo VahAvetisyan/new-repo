@@ -8,6 +8,7 @@ body{
 	font-family: 'Jost', sans-serif; */
 	/* background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);  */
 }
+
 .main{
 	margin: auto;
 	width: 350px;
@@ -16,13 +17,13 @@ body{
 	overflow: hidden;
 	background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
 	border-radius: 10px;
-	box-shadow: 5px 20px 50px #000;
+	box-shadow: 5px 20px 50px #000; 
 }
 #chk{
 	display: none;
 }
 .signup{
-	position: relative;
+	/* position: relative; */
 	width:100%;
 	height: 100%;
 }
@@ -38,7 +39,7 @@ label{
 }
 
 .main input{
- color:black;
+ 	color:black;
 	width: 60%;
 	height: 40px;
 	background: #e0dede;
@@ -50,6 +51,7 @@ label{
 	outline: none;
 	border-radius: 5px;
 }
+
 .SignIn-Button{
 	width: 60%;
 	height: 40px;

@@ -44,16 +44,7 @@ export default function MovieReviews(props) {
           severity: "success",
         })
       );
-    }else{
-      dispatch(
-        setSnackBarData({
-          open: true,
-          message: "Enter comment content",
-          severity: "error",
-        })
-      );
-    }
-    
+    }    
   }
   
   useEffect(()=>{

@@ -8,6 +8,7 @@ export default function SimilarTVShows(props) {
     const id=props.id
     const navigate = useNavigate()
     const [similarMovies, setSimilarMovies] = useState([])
+    let [width, setWidth] = useState(5)
 
 
     const getSimilarMovies = async () => {
@@ -31,10 +32,19 @@ export default function SimilarTVShows(props) {
           }
         })
       }
+
+      window.addEventListener("resize", ()=>{
+        if (window.innerWidth <= 1400) {
+          setWidth(3)
+        } else {
+          setWidth(5)
+        }
+      })
+    
   
     const settings = {
         infinite: true,
-        slidesToShow: 5,
+        slidesToShow: width,
         slidesToScroll: 1,
         lazyLoad: true,
         autoplay: true,
