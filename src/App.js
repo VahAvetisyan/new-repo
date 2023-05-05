@@ -15,17 +15,17 @@ import SearchResult from "./routes/SearchResult";
 import MoviePage from "./routes/MoviePage";
 import TvShowPage from "./routes/TvShowPage";
 import ActorsBio from "./routes/ActorsBio";
-// import SignIn from "./components/sign in/SignIn";
-// import SignUp from "./components/sign in/SignUp";
 import { useDispatch, useSelector } from "react-redux";
 import { selectLoggedInUser, setUser } from "./redux/reducers/userReducer";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase/firebase";
 import ProfilePage from "./routes/ProfilePage";
 import Watchlist from "./routes/Watchlist";
-// import Terms from "./components/sign in/Terms";
 import SimpleSnackbar from "./components/SnackBar";
 import Registration from "./components/sing in/SingIn";
+
+
+
 const App = () => {
   const loggedInUser = useSelector(selectLoggedInUser);
   const dispatch = useDispatch();

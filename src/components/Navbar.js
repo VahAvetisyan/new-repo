@@ -36,7 +36,7 @@ const Navbar = (props) => {
               <MenuItems items={menu} key={index} depthLevel={depthLevel} />
             )
           })}
-          <div className="signInSignUpButtons">
+          <div className="logOut">
             <button onClick={onLogOutClick}>
               <LogoutIcon />
             </button>
@@ -53,7 +53,7 @@ const Navbar = (props) => {
           <Search />
           <div className="signInSignUpButtons">
             <button>
-              <a href="/registation" >SingIn/SignUp</a>
+              <a href="/registation" >Sing In/Sign Up</a>
             </button>
            
           </div>
