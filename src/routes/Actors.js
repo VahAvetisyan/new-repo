@@ -3,14 +3,15 @@ import "./style/actors.css";
 import { useNavigate } from "react-router-dom";
 import { linkClasses } from "@mui/material";
 import "./style/responsive.css";
-
+import Responsive from "../Shared/Responsive";
 
 
 const Actors = () => {
   const navigate = useNavigate()
   let [actors, setActors] = useState([]);
   let [page, setPage] = useState(1);
-
+let resp=Responsive()
+console.log(`${resp}`)
   const logJSONData = async () => {
     let response = await fetch(
       `https://api.themoviedb.org/3/person/popular?api_key=8cc8bb5915e1ce414955be2f44bcb790&language=en-US&page=${page}`
@@ -33,7 +34,7 @@ const Actors = () => {
   return (
     <div id="actors">
       <h2>Popular People</h2>
-      <div id="actors-imgs-container">
+      <div id="actors-imgs-container"  style={{gridTemplateColumns:`repeat($)`}}>
         {actors.map((actor) => (
           <div key={actor.name} onClick={()=>{handlerOnClick(actor, actor.id)}}>
             <img

@@ -53,11 +53,9 @@ const Navbar = (props) => {
           <Search />
           <div className="signInSignUpButtons">
             <button>
-              <a href="/sign-in">Sign In</a>
+              <a href="/registation" >SingIn/SignUp</a>
             </button>
-            <a href="/sign-up">
-              <button>Sign Up</button>
-            </a>
+           
           </div>
         </ul>
       )}
