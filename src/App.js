@@ -23,6 +23,7 @@ import ProfilePage from "./routes/ProfilePage";
 import Watchlist from "./routes/Watchlist";
 import SimpleSnackbar from "./components/SnackBar";
 import Registration from "./components/sing in/SingIn";
+import Settings from "./routes/Settings";
 
 
 
@@ -47,7 +48,6 @@ const App = () => {
           <Route path="movies/upcoming" element={<MoviesUpcoming />} />
           <Route path="movies/now-playing" element={<MoviesNowPlaying />} />
           <Route path="movies/top-rated" element={<MoviesTopRated />} />
-          {/* <Route path="terms" element={<Terms />} /> */}
           <Route path="tv-shows/popular" element={<PopularTVShows />} />
           <Route path="movie/:movieId" element={<MoviePage />} />
           <Route path="tv-show/:tvId" element={<TvShowPage />} />
@@ -61,11 +61,11 @@ const App = () => {
             <>
               <Route path="user-profile" element={<ProfilePage />} />
               <Route path="user-watchlist" element={<Watchlist />} />
+              <Route path="user-settings" element={<Settings />} />
             </>
           ) : (
             <>
               <Route path="registation" element={<Registration />} />
-              {/* <Route path="sign-up" element={<SignUp />} /> */}
             </>
           )}
           <Route path="*" element={<Navigate replace to="/" />} />

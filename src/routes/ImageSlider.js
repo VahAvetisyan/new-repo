@@ -9,6 +9,7 @@ const ImageSlider = () => {
   const navigate = useNavigate();
   let [movie, setMovie] = useState([]);
   let [width, setWidth] = useState(5);
+
   const logJSONData = async () => {
     let api_key = "8cc8bb5915e1ce414955be2f44bcb790";
     let response = await fetch(

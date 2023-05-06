@@ -6,6 +6,8 @@ import MovieReviews from "./MoviePageAttributes/MovieReviews"
 import {LinearProgress} from "@mui/material"
 import SimilarMovies from "./MoviePageAttributes/SimilarMovies"
 import MoviesCasts from "./MoviePageAttributes/MoviesCasts"
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 export default function MoviePage() {
   const {movieId} = useParams()
@@ -13,6 +15,7 @@ export default function MoviePage() {
   const [movie, setMovie] = useState({})
   const [movieLoading, setMovieLoading] = useState(false)
   const [videoLoading, setVideoLoading] = useState(false)
+  const [isFavorite, setIsFavorite] = useState(false)
 
   const getMovie = useCallback(async () => {
     let api_key = "8cc8bb5915e1ce414955be2f44bcb790"
@@ -30,6 +33,10 @@ export default function MoviePage() {
       getMovie(movieId)
     }
   }, [movieId])
+
+  const favoriteChanging = () => {
+    setIsFavorite(!isFavorite)
+  }
 
   const getVideos = async () => {
     let api_key = "8cc8bb5915e1ce414955be2f44bcb790"
@@ -92,6 +99,17 @@ export default function MoviePage() {
                   backgroundColor: "#d6d6d6"
                 })}
               />
+              <div style={{display: 'flex'}} onClick={favoriteChanging}>
+                {
+                  isFavorite?
+                  <FavoriteIcon sx={{fontSize: '35px',color: 'red'}}/>:
+                  <>
+                  <FavoriteBorderIcon sx={{fontSize: '35px',color: 'red'}}/>
+                  <h6>Add to Watchlist</h6>
+                  </>
+                }
+              
+              </div>
             </div>
             <p style={{marginLeft: 20}}>({movie.vote_count} votes)</p>
           </div>
