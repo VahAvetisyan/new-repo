@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { setSnackBarData } from "../../redux/reducers/snackBarReducer";
 import { signInWithEmailAndPassword } from "firebase/auth";
   function  Registration (){
-    
+    let a=1
     let [password,setPassword]=useState();
     let [mail,setMail]=useState();
     let [username,setUsername]=useState();
