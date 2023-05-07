@@ -30,10 +30,7 @@ export default function MovieReviews(props) {
         author_details: {
           author_path: "",
           name: "guest"
-        }
-        
-      }
-      
+        }}
       )
       dispatch(
         setSnackBarData({
