@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Avatar from '@mui/material/Avatar';
-import "./comments.css"
 import { setSnackBarData } from "../../redux/reducers/snackBarReducer";
 import { useDispatch } from "react-redux";
 import { LinearProgress } from "@mui/material";
+import "./comments.css";
 
 let addComments = []
 
@@ -21,8 +21,6 @@ export default function MovieReviews(props) {
     let jsonData = await response.json();
     setReview(jsonData.results);
   };
-
-
 
   const HandlerOnAddBtnClick = () => {
     if(newComment){
