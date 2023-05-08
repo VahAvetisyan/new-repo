@@ -24,22 +24,17 @@ import Watchlist from "./routes/Watchlist";
 import SimpleSnackbar from "./components/SnackBar";
 import Registration from "./components/sing in/SingIn";
 import Settings from "./routes/Settings";
-import Footer from "./Footer/Footer";
 
 
 const App = () => {
   const loggedInUser = useSelector(selectLoggedInUser);
   const dispatch = useDispatch();
 
-
   React.useEffect(() => {
     onAuthStateChanged(auth, (u) => {
       dispatch(setUser(u?.email));
     });
   }, []);
-
-   
-
 
   return (
     <>
