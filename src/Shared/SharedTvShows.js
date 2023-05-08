@@ -32,7 +32,6 @@ const SharedTvShows = (props) => {
 
   return (
     <div id='actors'>
-      <h2>{type}</h2>
       <div id='actors-imgs-container'>
         {movies.map((movie) => (
           <div
