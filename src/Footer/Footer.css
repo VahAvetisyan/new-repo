@@ -180,6 +180,18 @@ header span {
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
+@media screen and (max-width:1441px) and (min-width:800px){
+  .icons {
+  display: inline-block;
+  position: absolute;
+
+  left: 68%;
+  bottom: 0;
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+}
 
 /* Icons */
 
