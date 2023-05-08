@@ -24,7 +24,7 @@ import Watchlist from "./routes/Watchlist";
 import SimpleSnackbar from "./components/SnackBar";
 import Registration from "./components/sing in/SingIn";
 import Settings from "./routes/Settings";
-
+import Footer from "./Footer/Footer";
 
 
 const App = () => {
@@ -38,9 +38,13 @@ const App = () => {
     });
   }, []);
 
+   
+
+
   return (
     <>
       <SimpleSnackbar />
+
       <Routes>
         <Route path="/" element={<Layout isLoggedInUser={loggedInUser} />}>
           <Route index element={<Home />} />
@@ -71,6 +75,7 @@ const App = () => {
           <Route path="*" element={<Navigate replace to="/" />} />
         </Route>
       </Routes>
+ 
     </>
   );
 };

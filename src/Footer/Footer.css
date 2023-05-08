@@ -239,7 +239,7 @@ header span {
   left: 40px;
 }
 
-.icons a:hover span {
+.icons a:hover * {
   bottom: 50px;
   visibility: visible;
   opacity: 1;
@@ -247,21 +247,3 @@ header span {
 
 /* font awesome icons */
 
-.icons a:nth-of-type(1):before {
-  content: "\f09a";
-}
-.icons a:nth-of-type(2):before {
-  content: "\f099";
-}
-.icons a:nth-of-type(3):before {
-  content: "\f0d5";
-}
-.icons a:nth-of-type(4):before {
-  content: "\f113";
-}
-.icons a:nth-of-type(5):before {
-  content: "\f17d";
-}
-.icons a:nth-of-type(6):before {
-  content: "\f1cb";
-}

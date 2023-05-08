@@ -1,6 +1,11 @@
 
 
-
+import FacebookIcon from "@mui/icons-material/Facebook";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import TelegramIcon from "@mui/icons-material/Telegram";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import InstagramIcon from "@mui/icons-material/Instagram";
 import "./Footer.css"
 function Footer() {
   return (
@@ -17,7 +22,7 @@ function Footer() {
           </p>
 
           <p className="footer-company-name">
-            Copyright © 2021 <strong>SagarDeveloper</strong> All rights reserved
+            Copyright © 2023 <strong>Cinema ASD</strong> All rights reserved
           </p>
         </div>
 
@@ -25,14 +30,14 @@ function Footer() {
           <div>
             <i className="fa fa-map-marker"></i>
             <p>
-              <span>Ghaziabad</span>
-              Delhi
+              <span>Armenia</span>
+              Yerevan
             </p>
           </div>
 
           <div>
             <i className="fa fa-phone"></i>
-            <p>+1 744959754258</p>
+            <p>+1 7459754258</p>
           </div>
           <div>
             <i className="fa fa-envelope"></i>
@@ -44,30 +49,27 @@ function Footer() {
         <div className="footer-right">
           <p className="footer-company-about">
             <span>About the company</span>
-            <strong>Sagar Developer</strong> is a Youtube channel where you can
-            find more creative CSS Animations and Effects along with HTML,
-            JavaScript and Projects using C/C++.
+            <strong>Aca React first group</strong>
           </p>
 
-          <div className="icons"> 
+          <div className="icons">
             <a href="#">
-              <span>Facebook</span>
+              <FacebookIcon />
             </a>
             <a href="#">
-              <span>Twitter</span>
+              <TwitterIcon />
             </a>
             <a href="#">
-              <span>Google+</span>
+              <TelegramIcon />
             </a>
-            <a href="#">
-              <span>Github</span>
+            <a href="https://github.com/VahAvetisyan/new-repo/tree/master">
+              <GitHubIcon />
             </a>
-            <a href="#">
-              <span>Dribbble</span>
+
+            <a href="">
+              <LinkedInIcon />
             </a>
-            <a href="#">
-              <span>CodePen</span>
-            </a>
+            <a href=""><InstagramIcon/></a>
           </div>
         </div>
       </footer>
