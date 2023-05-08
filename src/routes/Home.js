@@ -3,7 +3,7 @@ import "./style/home.css";
 import ImageSlider from "./ImageSlider";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import { useNavigate } from "react-router-dom";
-import Footer from "../Footer/Footer";
+import Footer from "../components/Footer/Footer";
 const Home = () => {
   let [movie, setMovie] = useState({});
   const navigate = useNavigate()
