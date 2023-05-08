@@ -25,7 +25,6 @@ import SimpleSnackbar from "./components/SnackBar";
 import Registration from "./components/sing in/SingIn";
 import Settings from "./routes/Settings";
 
-
 const App = () => {
   const loggedInUser = useSelector(selectLoggedInUser);
   const dispatch = useDispatch();
@@ -43,17 +42,21 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Layout isLoggedInUser={loggedInUser} />}>
           <Route index element={<Home />} />
-          <Route path="movies/popular" element={<MoviesPopular />} />
-          <Route path="movies/upcoming" element={<MoviesUpcoming />} />
-          <Route path="movies/now-playing" element={<MoviesNowPlaying />} />
-          <Route path="movies/top-rated" element={<MoviesTopRated />} />
-          <Route path="tv-shows/popular" element={<PopularTVShows />} />
+          <Route path="movies/">
+            <Route path="popular" element={<MoviesPopular />} />
+            <Route path="upcoming" element={<MoviesUpcoming />} />
+            <Route path="now-playing" element={<MoviesNowPlaying />} />
+            <Route path="top-rated" element={<MoviesTopRated />} />
+          </Route>
           <Route path="movie/:movieId" element={<MoviePage />} />
+          <Route path="tv-shows/">
+            <Route path="popular" element={<PopularTVShows />} />
+            <Route path="airing-today" element={<AiringToday />} />
+            <Route path="on-tv" element={<OnTV />} />
+            <Route path="top-rated" element={<TopRatedTVShows />} />
+          </Route>
           <Route path="tv-show/:tvId" element={<TvShowPage />} />
           <Route path="people/:actorId" element={<ActorsBio />} />
-          <Route path="tv-shows/airing-today" element={<AiringToday />} />
-          <Route path="tv-shows/on-tv" element={<OnTV />} />
-          <Route path="tv-shows/top-rated" element={<TopRatedTVShows />} />
           <Route path="search-result" element={<SearchResult />} />
           <Route path="actors" element={<Actors />} />
           {loggedInUser ? (
@@ -70,7 +73,6 @@ const App = () => {
           <Route path="*" element={<Navigate replace to="/" />} />
         </Route>
       </Routes>
- 
     </>
   );
 };
