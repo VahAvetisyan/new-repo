@@ -34,7 +34,7 @@
     justify-content: flex-start;
     margin-bottom: 30px;
 }
-#add-comment input,button{
+#add-comment input button{
     margin-right: 20px;
     border-radius: 10px;
 }

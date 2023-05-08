@@ -17,6 +17,7 @@ function Registration() {
   const SingUp = async (event) => {
     event.preventDefault();
     if(username){
+      
     try {
       const userCred = await createUserWithEmailAndPassword(
         auth,
