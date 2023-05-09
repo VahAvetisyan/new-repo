@@ -12,7 +12,7 @@ export default function SimilarMovies(props) {
   const navigate = useNavigate()
   const [similarMovies, setSimilarMovies] = useState([])
   let dispatch = useDispatch()
-  let responsive = useSelector(selectResponsive)
+  let screenSize = useSelector(selectResponsive)
 
   const getSimilarMovies = async () => {
     let api_key = "8cc8bb5915e1ce414955be2f44bcb790"
@@ -30,6 +30,10 @@ export default function SimilarMovies(props) {
       dispatch(setScreenSize(2))
     }
   }, [])
+
+
+
+  
   useEffect(() => {
     getSimilarMovies()
   }, [id])
@@ -44,12 +48,12 @@ export default function SimilarMovies(props) {
 
   const settings = {
     infinite: true,
-    slidesToShow: responsive,
+    slidesToShow: screenSize,
     slidesToScroll: 1,
     lazyLoad: true,
     autoplay: true,
-    autoplaySpeed: 2000
-  }
+    autoplaySpeed: 2000,
+  };
 
   if (!similarMovies) {
     return <LinearProgress />
