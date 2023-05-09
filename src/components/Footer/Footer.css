@@ -180,24 +180,24 @@ header span {
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
-@media screen and (max-width:1441px) and (min-width:800px){
+@media screen and (max-width: 1441px) and (min-width: 800px) {
   .icons {
-  display: inline-block;
-  position: absolute;
+    display: inline-block;
+    position: absolute;
 
-  left: 68%;
-  bottom: 0;
-  -ms-transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
+    left: 68%;
+    bottom: -100%;
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
 }
 
 /* Icons */
 
 .icons a {
   color: #fff;
-  background:#e0ac1c;
+  background: #e0ac1c;
   border-radius: 4px;
   text-align: center;
   text-decoration: none;
@@ -233,8 +233,6 @@ header span {
   background: #fff;
   visibility: hidden;
   opacity: 0;
-
-
 }
 
 /* pop-up text arrow */
@@ -258,4 +256,3 @@ header span {
 }
 
 /* font awesome icons */
-
