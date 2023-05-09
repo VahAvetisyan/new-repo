@@ -6,13 +6,14 @@ import {LinearProgress} from "@mui/material"
 import {useSelector, useDispatch} from "react-redux"
 import {selectResponsive} from "../../redux/reducers/responsiveReducer"
 import {setScreenSize} from "../../redux/reducers/responsiveReducer"
+import Responsive from "../../Shared/Responsive"
 
 export default function SimilarMovies(props) {
   const id = props.id
   const navigate = useNavigate()
   const [similarMovies, setSimilarMovies] = useState([])
   let dispatch = useDispatch()
-  let screenSize = useSelector(selectResponsive)
+  let screenSize = Responsive()
 
   const getSimilarMovies = async () => {
     let api_key = "8cc8bb5915e1ce414955be2f44bcb790"
@@ -31,9 +32,6 @@ export default function SimilarMovies(props) {
     }
   }, [])
 
-
-
-  
   useEffect(() => {
     getSimilarMovies()
   }, [id])
@@ -52,8 +50,8 @@ export default function SimilarMovies(props) {
     slidesToScroll: 1,
     lazyLoad: true,
     autoplay: true,
-    autoplaySpeed: 2000,
-  };
+    autoplaySpeed: 2000
+  }
 
   if (!similarMovies) {
     return <LinearProgress />

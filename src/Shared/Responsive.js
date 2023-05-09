@@ -1,8 +1,5 @@
 function Responsive() {
-  if (window.innerWidth <= 1441) {
-    return 3
-  } else if (window.innerWidth <= 800) {
-    return 2
-  }
+  return window.innerWidth <= 1445 ? 3 : 5
 }
+  
 export default Responsive
