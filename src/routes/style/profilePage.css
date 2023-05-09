@@ -23,11 +23,29 @@ input{
     height: 50px;
     font-size: large;
     cursor: pointer;
+    margin: 0;
+}
+#upload-button:hover{
+    background-color: rgb(226, 177, 41);
+    cursor: pointer;
 }
 
 #info{
     margin: 20px;
     background-color: transparent;
+    display: flex;
+    flex-direction: row;
+}
+#info button{
+    width: 100px;
+    height: 30px;
+    padding-bottom: 10px;
+    font-size: 14px;
+    padding: 5px;
+}
+#info button:hover{
+    background-color: rgb(255, 187, 0);
+    cursor: pointer;
 }
 
 #profile-page{
@@ -40,5 +58,10 @@ input{
     background-color: rgb(36, 36, 36);
     display: flex;
     border-radius: 10px;
+}
+#edit-username{
+    color: black;
+    width: 250px;
+    height: 30px;
 }
 

@@ -8,6 +8,8 @@ function Profile() {
   const [image, setImage] = useState(null)
   const [url, setUrl] = useState(null)
   const [userName, setUserName] = useState("")
+  const [editingMode, setEditingMode] = useState(false)
+  const [newUsername, setNewUsername] = useState('')
   auth.currentUser.photoURL = url
 
   const docRef = doc(db, "Users", `${auth.lastNotifiedUid}`)
@@ -22,6 +24,16 @@ function Profile() {
     if (e.target.files[0]) {
       setImage(e.target.files[0])
     }
+  }
+
+  const onEditButtonClick = () => {
+    setEditingMode(!editingMode)
+  }
+
+  const onSaveButtonClick = async () => {
+    const usersRef = doc(db, "Users", `${auth.lastNotifiedUid}`)
+    setDoc(usersRef, {username: newUsername}, {merge: true})
+    setEditingMode(!editingMode)
   }
 
   const handleSubmit = () => {
@@ -56,9 +68,17 @@ function Profile() {
           Upload Image
         </button>
       </div>
+      {
+        editingMode?
+        <div id='info'>
+        <h3>Username:<input type="text" id="edit-username" onChange={(e)=>setNewUsername(e.target.value)}/></h3>
+        <button onClick={onSaveButtonClick}><b>SAVE</b></button>
+      </div>:
       <div id='info'>
         <h3>Username: {userName}</h3>
+        <button onClick={onEditButtonClick}><b>EDIT</b></button>
       </div>
+      }
     </div>
   )
 }
