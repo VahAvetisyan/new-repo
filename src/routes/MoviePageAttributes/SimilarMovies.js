@@ -3,12 +3,16 @@ import "../style/SimilarMovies.css"
 import {useNavigate} from "react-router-dom"
 import Slider from "react-slick"
 import {LinearProgress} from "@mui/material"
+import {useSelector, useDispatch} from "react-redux"
+import {selectResponsive} from "../../redux/reducers/responsiveReducer"
+import {setScreenSize} from "../../redux/reducers/responsiveReducer"
 
 export default function SimilarMovies(props) {
   const id = props.id
   const navigate = useNavigate()
   const [similarMovies, setSimilarMovies] = useState([])
-  let [width, setWidth] = useState(5)
+  let dispatch = useDispatch()
+  let responsive = useSelector(selectResponsive)
 
   const getSimilarMovies = async () => {
     let api_key = "8cc8bb5915e1ce414955be2f44bcb790"
@@ -20,6 +24,13 @@ export default function SimilarMovies(props) {
   }
 
   useEffect(() => {
+    if (window.innerWidth <= 1441) {
+      dispatch(setScreenSize(3))
+    } else if (window.innerWidth <= 800) {
+      dispatch(setScreenSize(2))
+    }
+  }, [])
+  useEffect(() => {
     getSimilarMovies()
   }, [id])
 
@@ -30,17 +41,10 @@ export default function SimilarMovies(props) {
       }
     })
   }
-  window.addEventListener("resize", ()=>{
-    if (window.innerWidth <= 1400) {
-      setWidth(3)
-    } else {
-      setWidth(5)
-    }
-  })
 
   const settings = {
     infinite: true,
-    slidesToShow: width,
+    slidesToShow: responsive,
     slidesToScroll: 1,
     lazyLoad: true,
     autoplay: true,

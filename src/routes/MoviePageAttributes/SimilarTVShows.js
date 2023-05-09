@@ -33,14 +33,7 @@ export default function SimilarTVShows(props) {
         })
       }
 
-      window.addEventListener("resize", ()=>{
-        if (window.innerWidth <= 1400) {
-          setWidth(3)
-        } else {
-          setWidth(5)
-        }
-      })
-    
+      
   
     const settings = {
         infinite: true,
