@@ -33,8 +33,7 @@ input{
 #info{
     margin: 20px;
     background-color: transparent;
-    display: flex;
-    flex-direction: row;
+ 
 }
 #info button{
     width: 100px;

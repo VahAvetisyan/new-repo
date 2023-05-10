@@ -58,14 +58,7 @@ export const profile = [
         title: `Profile`,
         url: "user-profile",
       },
-      {
-        title: "Watchlist",
-        url: "user-watchlist",
-      },
-      {
-        title: "Settings",
-        url: "user-settings",
-      }
+  
     ],
   }
 ]
