@@ -1,16 +1,8 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import React from "react";
 import Home from "./routes/Home";
-import MoviesPopular from "./routes/MoviesPopular";
-import MoviesNowPlaying from "./routes/MoviesNowPlaying";
-import OnTV from "./routes/OnTV";
-import MoviesUpcoming from "./routes/MoviesUpcoming";
 import Layout from "./components/Layout";
-import PopularTVShows from "./routes/PopularTVShows";
-import TopRatedTVShows from "./routes/TopRatedTVShows";
-import AiringToday from "./routes/AiringToday";
 import Actors from "./routes/Actors";
-import MoviesTopRated from "./routes/MoviesTopRated";
 import SearchResult from "./routes/SearchResult";
 import MoviePage from "./routes/MoviePage";
 import TvShowPage from "./routes/TvShowPage";
@@ -24,6 +16,8 @@ import Watchlist from "./routes/Watchlist";
 import SimpleSnackbar from "./components/SnackBar";
 import Registration from "./components/sing in/SingIn";
 import Settings from "./routes/Settings";
+import SharedMovies from "./Shared/SharedMovies";
+import SharedTvShows from "./Shared/SharedTvShows";
 
 const App = () => {
   const loggedInUser = useSelector(selectLoggedInUser);
@@ -43,17 +37,17 @@ const App = () => {
         <Route path="/" element={<Layout isLoggedInUser={loggedInUser} />}>
           <Route index element={<Home />} />
           <Route path="movies/">
-            <Route path="popular" element={<MoviesPopular />} />
-            <Route path="upcoming" element={<MoviesUpcoming />} />
-            <Route path="now-playing" element={<MoviesNowPlaying />} />
-            <Route path="top-rated" element={<MoviesTopRated />} />
+            <Route path="popular" element={<SharedMovies type="popular" />} />
+            <Route path="upcoming" element={<SharedMovies type="upcoming" />} />
+            <Route path="now-playing" element={<SharedMovies type="now_playing" />} />
+            <Route path="top-rated" element={<SharedMovies type="top_rated" />} />
           </Route>
           <Route path="movie/:movieId" element={<MoviePage />} />
           <Route path="tv-shows/">
-            <Route path="popular" element={<PopularTVShows />} />
-            <Route path="airing-today" element={<AiringToday />} />
-            <Route path="on-tv" element={<OnTV />} />
-            <Route path="top-rated" element={<TopRatedTVShows />} />
+            <Route path="popular" element={<SharedTvShows type="popular" />} />
+            <Route path="airing-today" element={<SharedTvShows type="airing_today" />} />
+            <Route path="on-tv" element={<SharedTvShows type="on_the_air" />} />
+            <Route path="top-rated" element={<SharedTvShows type="top_rated" />} />
           </Route>
           <Route path="tv-show/:tvId" element={<TvShowPage />} />
           <Route path="people/:actorId" element={<ActorsBio />} />

@@ -21,7 +21,7 @@ const SharedMovies = (props) => {
 
   useEffect(() => {
     logJSONData()
-  }, [page])
+  }, [page,type])
 
   const handlerOnClick = (movie, id) => {
     navigate(`/movie/${id}`, {

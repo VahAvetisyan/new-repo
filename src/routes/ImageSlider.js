@@ -50,11 +50,11 @@ const ImageSlider = () => {
   }
 
   return (
-    <>
-      <div className='tag'>
+    <div>
+      <div className='tag' >
         <h2>Trending Today</h2>
       </div>
-      <div className='imgslider'>
+      <div className='imgslider' >
         <Slider {...settings}>
           {movie.map((movie) =>
             movie.poster_path ? (
@@ -78,7 +78,7 @@ const ImageSlider = () => {
           )}
         </Slider>
       </div>
-    </>
+    </div>
   )
 }
 export default ImageSlider

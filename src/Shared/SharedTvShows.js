@@ -15,12 +15,13 @@ const SharedTvShows = (props) => {
       `https://api.themoviedb.org/3/tv/${type}?api_key=${MOVIES_API_KEY}&language=en-US&page=${page}`
     )
     let jsonData = await response.json()
+    console.log(jsonData);
     setMovie(jsonData.results)
   }
 
   useEffect(() => {
     logJSONData()
-  }, [page])
+  }, [page,type])
 
   const handlerOnClick = (movie, id) => {
     navigate(`/tv-show/${id}`, {
@@ -42,11 +43,11 @@ const SharedTvShows = (props) => {
           >
             <img
               className='actors-img'
-              key={movie.original_title}
+              key={movie.original_name}
               src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
               alt='actor'
             />
-            <h3>{movie.title}</h3>
+            <h3>{movie.original_name}</h3>
           </div>
         ))}
       </div>

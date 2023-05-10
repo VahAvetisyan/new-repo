@@ -14,7 +14,6 @@ export default function MovieReviews(props) {
   const [url, setUrl] = useState(null);
   const [userName, setUserName] = useState("");
   const dispatch = useDispatch();
-  console.log(review);
 
   const getVideos = async () => {
     let api_key = "8cc8bb5915e1ce414955be2f44bcb790";

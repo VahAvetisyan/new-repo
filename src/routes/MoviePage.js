@@ -1,86 +1,96 @@
-import React, {useCallback, useEffect, useState} from "react"
-import {useParams} from "react-router-dom"
-import "./style/moviePage.css"
-import {CircularProgressbar, buildStyles} from "react-circular-progressbar"
-import MovieReviews from "./MoviePageAttributes/MovieReviews"
-import {LinearProgress} from "@mui/material"
-import SimilarMovies from "./MoviePageAttributes/SimilarMovies"
-import MoviesCasts from "./MoviePageAttributes/MoviesCasts"
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import React, { useCallback, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import "./style/moviePage.css";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import MovieReviews from "./MoviePageAttributes/MovieReviews";
+import { LinearProgress } from "@mui/material";
+import SimilarMovies from "./MoviePageAttributes/SimilarMovies";
+import MoviesCasts from "./MoviePageAttributes/MoviesCasts";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import { auth, db } from "../firebase/firebase";
+import { doc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
 
 export default function MoviePage() {
-  const {movieId} = useParams()
-  const [videos, setVideos] = useState([])
-  const [movie, setMovie] = useState({})
-  const [movieLoading, setMovieLoading] = useState(false)
-  const [videoLoading, setVideoLoading] = useState(false)
-  const [isFavorite, setIsFavorite] = useState(false)
+  const { movieId } = useParams();
+  const [videos, setVideos] = useState([]);
+  const [movie, setMovie] = useState({});
+  const [movieLoading, setMovieLoading] = useState(false);
+  const [videoLoading, setVideoLoading] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
+  const [favoriteList, setFavoriteList] = useState([]);
 
   const getMovie = useCallback(async () => {
-    let api_key = "8cc8bb5915e1ce414955be2f44bcb790"
-    setMovieLoading(true)
+    let api_key = "8cc8bb5915e1ce414955be2f44bcb790";
+    setMovieLoading(true);
     let response = await fetch(
       `https://api.themoviedb.org/3/movie/${movieId}?api_key=${api_key}&language=en-US`
-    )
-    let jsonData = await response.json()
-    setMovieLoading(false)
-    setMovie(jsonData)
-  }, [movieId])
+    );
+    let jsonData = await response.json();
+    setMovieLoading(false);
+    setMovie(jsonData);
+  }, [movieId]);
 
   useEffect(() => {
     if (movieId) {
-      getMovie(movieId)
+      getMovie(movieId);
     }
-  }, [movieId])
+  }, []);
+console.log(auth.currentUser.uid);
+  const favoriteChanging = async () => {
+   
+      const favoriteRef = doc(db, "Users", `9Zptq0z0gsh76SAYuZb3QxHJeeq2`);
+      await updateDoc(favoriteRef, {
+        favorite: arrayUnion(5),
+      });
+   
 
-  const favoriteChanging = () => {
-    setIsFavorite(!isFavorite)
-  }
+    setIsFavorite(!isFavorite);
+  };
 
   const getVideos = async () => {
-    let api_key = "8cc8bb5915e1ce414955be2f44bcb790"
-    setVideoLoading(true)
+    let api_key = "8cc8bb5915e1ce414955be2f44bcb790";
+    setVideoLoading(true);
     let response = await fetch(
       ` https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${api_key}&language=en-US`
-    )
-    let jsonData = await response.json()
-    setVideoLoading(false)
-    setVideos(jsonData.results.slice(0, 3))
-  }
+    );
+    let jsonData = await response.json();
+    setVideoLoading(false);
+    setVideos(jsonData.results.slice(0, 3));
+  };
   useEffect(() => {
-    getVideos()
-  }, [movie])
+    getVideos();
+  }, [movie]);
 
   if (movieLoading || videoLoading) {
-    return <LinearProgress />
+    return <LinearProgress />;
   }
 
   if (!movie) {
-    return <h1>Nothing to Show</h1>
+    return <h1>Nothing to Show</h1>;
   }
 
   return (
     <div
-      id='homepage'
+      id="homepage"
       style={{
         backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie.backdrop_path})`,
         backgroundRepeat: "no-repeat",
-        backgroundSize: "cover"
+        backgroundSize: "cover",
       }}
     >
-      <div id='homepage-poster'>
+      <div id="homepage-poster">
         <img
-          id='home-img'
+          id="home-img"
           src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-          alt='movie'
+          alt="movie"
         />
-        <div id='info'>
+        <div id="info">
           <h2>{movie.title}</h2>
           <h4>Release Date: {movie.release_date}</h4>
           <h5>Discription: {movie.overview}</h5>
-          <div style={{display: "flex", alignItems: "center"}}>
-            <div style={{width: 50, height: 50}}>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <div style={{ width: 50, height: 50 }}>
               <CircularProgressbar
                 value={movie.vote_average * 10}
                 text={
@@ -96,41 +106,42 @@ export default function MoviePage() {
                   pathColor: `green`,
                   textColor: "white",
                   trailColor: "red",
-                  backgroundColor: "#d6d6d6"
+                  backgroundColor: "#d6d6d6",
                 })}
               />
-              <div style={{display: 'flex'}} onClick={favoriteChanging}>
-                {
-                  isFavorite?
-                  <FavoriteIcon sx={{fontSize: '35px',color: 'red'}}/>:
+              <div style={{ display: "flex" }} onClick={favoriteChanging}>
+                {isFavorite ? (
+                  <FavoriteIcon sx={{ fontSize: "35px", color: "red" }} />
+                ) : (
                   <>
-                  <FavoriteBorderIcon sx={{fontSize: '35px',color: 'red'}}/>
-                  <h6>Add to Watchlist</h6>
+                    <FavoriteBorderIcon
+                      sx={{ fontSize: "35px", color: "red" }}
+                    />
+                    <h6>Add to Watchlist</h6>
                   </>
-                }
-              
+                )}
               </div>
             </div>
-            <p style={{marginLeft: 20}}>({movie.vote_count} votes)</p>
+            <p style={{ marginLeft: 20 }}>({movie.vote_count} votes)</p>
           </div>
         </div>
       </div>
       <MoviesCasts id={movie.id} />
-      <div className='video'>
+      <div className="video">
         {videos.map((el) => (
           <iframe
             key={el.key}
-            width='400'
-            height='250'
+            width="400"
+            height="250"
             src={`https://www.youtube.com/embed/${el.key}`}
-            title='YouTube video player'
-            frameBorder='0'
-            allowFullScreen='allowfullscreen'
+            title="YouTube video player"
+            frameBorder="0"
+            allowFullScreen="allowfullscreen"
           ></iframe>
         ))}
       </div>
       <SimilarMovies id={movie.id} />
       <MovieReviews id={movie.id} />
     </div>
-  )
+  );
 }
