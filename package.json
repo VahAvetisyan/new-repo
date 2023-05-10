@@ -2,7 +2,6 @@
   "name": "react-multilevel-dropdown-menu",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://ibaslogic.github.io/react-multilevel-dropdown-menu",
   "dependencies": {
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
@@ -61,6 +60,7 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^4.0.0"
+    "gh-pages": "^4.0.0",
+    "prettier": "2.8.8"
   }
 }
