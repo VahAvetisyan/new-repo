@@ -1,4 +1,4 @@
-import { menuItems, profile } from "../MenuItems"
+import { menuItems, profile } from "./NavItems"
 import MenuItems from "./MenuItems"
 import "../App.css"
 import Search from "./Search"
