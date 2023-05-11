@@ -12,10 +12,8 @@ import { selectLoggedInUser, setUser } from "./redux/reducers/userReducer";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase/firebase";
 import ProfilePage from "./routes/ProfilePage";
-import Watchlist from "./routes/Watchlist";
 import SimpleSnackbar from "./components/SnackBar";
 import Registration from "./components/sing in/SingIn";
-import Settings from "./routes/Settings";
 import SharedMovies from "./Shared/SharedMovies";
 import SharedTvShows from "./Shared/SharedTvShows";
 
@@ -56,8 +54,6 @@ const App = () => {
           {loggedInUser ? (
             <>
               <Route path="user-profile" element={<ProfilePage />} />
-              <Route path="user-watchlist" element={<Watchlist />} />
-              <Route path="user-settings" element={<Settings />} />
             </>
           ) : (
             <>

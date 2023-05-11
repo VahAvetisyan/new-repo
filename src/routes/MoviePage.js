@@ -9,7 +9,8 @@ import MoviesCasts from "./MoviePageAttributes/MoviesCasts";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { auth, db } from "../firebase/firebase";
-import { doc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
+import { doc, updateDoc, arrayUnion, arrayRemove, getDoc } from "firebase/firestore";
+import { MOVIES_API_KEY } from "../constants/common";
 
 export default function MoviePage() {
   const { movieId } = useParams();
@@ -18,35 +19,49 @@ export default function MoviePage() {
   const [movieLoading, setMovieLoading] = useState(false);
   const [videoLoading, setVideoLoading] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
-  const [favoriteList, setFavoriteList] = useState([]);
 
   const getMovie = useCallback(async () => {
-    let api_key = "8cc8bb5915e1ce414955be2f44bcb790";
     setMovieLoading(true);
     let response = await fetch(
-      `https://api.themoviedb.org/3/movie/${movieId}?api_key=${api_key}&language=en-US`
+      `https://api.themoviedb.org/3/movie/${movieId}?api_key=${MOVIES_API_KEY}&language=en-US`
     );
     let jsonData = await response.json();
     setMovieLoading(false);
     setMovie(jsonData);
   }, [movieId]);
 
+  const getFavoriteList = async()=>{
+    if(auth){
+    const docRef = doc(db, "Users", `${auth.currentUser.uid}`);
+    const docSnap = await getDoc(docRef);
+    let favoriteMovies = (docSnap.data().favoriteMovies);
+    setIsFavorite(favoriteMovies.some(el=> el===movieId));
+    }
+  }
+
+  useEffect(() => {
+    getFavoriteList()
+  }, [movieId]);
+
+  const favoriteChanging = async () => {
+    const favoriteRef = doc(db, "Users", `${auth?.currentUser.uid}`);
+    if(!isFavorite){
+    setIsFavorite(!isFavorite)
+    await updateDoc(favoriteRef, {
+      favoriteMovies: arrayUnion(`${movieId}`),
+    })}else{
+      setIsFavorite(!isFavorite)
+    await updateDoc(favoriteRef, {
+      favoriteMovies: arrayRemove(`${movieId}`),
+    })
+    }
+  };
+
   useEffect(() => {
     if (movieId) {
       getMovie(movieId);
     }
-  }, []);
-console.log(auth.currentUser.uid);
-  const favoriteChanging = async () => {
-   
-      const favoriteRef = doc(db, "Users", `9Zptq0z0gsh76SAYuZb3QxHJeeq2`);
-      await updateDoc(favoriteRef, {
-        favorite: arrayUnion(5),
-      });
-   
-
-    setIsFavorite(!isFavorite);
-  };
+  }, [movieId]);
 
   const getVideos = async () => {
     let api_key = "8cc8bb5915e1ce414955be2f44bcb790";
