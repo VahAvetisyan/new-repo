@@ -8,7 +8,6 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import "./Footer.css"
 function Footer() {
-  let a=1
   return (
     <>
       <footer className="footer-distributed">
