@@ -1,4 +1,4 @@
-import {doc, getDoc} from "firebase/firestore"
+import {arrayRemove, doc, getDoc, updateDoc} from "firebase/firestore"
 import {auth, db} from "../firebase/firebase"
 import {useEffect, useState} from "react"
 import LinearProgress from "@mui/material/LinearProgress"
@@ -7,6 +7,7 @@ import Typography from "@mui/material/Typography"
 import List from "@mui/material/List"
 import Card from "@mui/material/Card"
 import {MOVIES_API_KEY} from "../constants/common"
+import "./style/watchlist.css"
 
 export default function Watchlist() {
   const [watchlist, setWatchlist] = useState([])
@@ -42,8 +43,18 @@ export default function Watchlist() {
   }, [])
 
   if (watchlist.length === 0) {
-    return <LinearProgress />
+    return "The watchlist is совсем(вообще) empty"
   }
+
+  async function removeFavorite(movieId) {
+    const favoriteRef = doc(db, "Users", `${auth?.currentUser.uid}`)
+    await updateDoc(favoriteRef, {
+      favoriteMovies: arrayRemove(`${movieId}`)
+    })
+  }
+  useEffect(() => {
+    removeFavorite()
+  },)
 
   return (
     <List
@@ -66,8 +77,28 @@ export default function Watchlist() {
                 src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
               />
             </AspectRatio>
-            <Typography mt={2}>{movie.title}</Typography>
-            <Typography level='body2'>{movie.release_date}</Typography>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "space-around"
+              }}
+            >
+              <div>
+                <Typography mt={2}>{movie.title}</Typography>
+                <Typography level='body2'>{movie.release_date}</Typography>
+              </div>
+              <button
+                className='removeFavorite'
+                style={{padding: "5px"}}
+                onClick={() => {
+                  removeFavorite(movie.id)
+                }}
+              >
+                Remove from watchlist
+              </button>
+            </div>
           </Card>
         ) : null
       )}
