@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useState} from "react"
-import {useParams} from "react-router-dom"
+import {useNavigate, useParams} from "react-router-dom"
 import "./style/moviePage.css"
 import {CircularProgressbar, buildStyles} from "react-circular-progressbar"
 import {LinearProgress} from "@mui/material"
@@ -8,17 +8,12 @@ import SimilarTVShows from "./MoviePageAttributes/SimilarTVShows"
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder"
 import FavoriteIcon from "@mui/icons-material/Favorite"
 import {auth, db} from "../firebase/firebase"
-import {
-  doc,
-  updateDoc,
-  arrayUnion,
-  arrayRemove,
-  getDoc
-} from "firebase/firestore"
+import {doc,updateDoc,arrayUnion,arrayRemove,getDoc} from "firebase/firestore"
 import {MOVIES_API_KEY} from "../constants/common"
 
 export default function MoviePage() {
   const {tvId} = useParams()
+  const navigate = useNavigate()
   const [videos, setVideos] = useState([])
   const [movie, setMovie] = useState(null)
   const [movieLoading, setMovieLoading] = useState(false)
@@ -64,18 +59,23 @@ export default function MoviePage() {
   }, [tvId])
 
   const favoriteChanging = async () => {
-    const favoriteRef = doc(db, "Users", `${auth?.currentUser.uid}`)
-    if (!isFavorite) {
-      setIsFavorite(!isFavorite)
-      await updateDoc(favoriteRef, {
-        favoriteTvShows: arrayUnion(`${tvId}`)
-      })
-    } else {
-      setIsFavorite(!isFavorite)
-      await updateDoc(favoriteRef, {
-        favoriteTvShows: arrayRemove(`${tvId}`)
-      })
-    }
+    if(auth.currentUser){
+      const favoriteRef = doc(db, "Users", `${auth?.currentUser.uid}`)
+      if (!isFavorite) {
+        setIsFavorite(!isFavorite)
+        await updateDoc(favoriteRef, {
+          favoriteTvShows: arrayUnion(`${tvId}`)
+        })
+      } else {
+        setIsFavorite(!isFavorite)
+        await updateDoc(favoriteRef, {
+          favoriteTvShows: arrayRemove(`${tvId}`)
+        })
+      }
+    }else(
+      navigate('/registation')
+    )
+    
   }
   useEffect(() => {
     getVideos()

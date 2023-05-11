@@ -7,7 +7,7 @@ import TabPanel from "@mui/lab/TabPanel"
 import MoviesWatchlist from "./MoviesWatchlist"
 import TvShowWatchlist from "./TVshowWatchlist"
 
-export default function LabTabs() {
+export default function Watchlist() {
   const [value, setValue] = React.useState("1")
 
   const handleChange = (event, newValue) => {

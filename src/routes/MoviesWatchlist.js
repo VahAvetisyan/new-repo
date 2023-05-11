@@ -8,6 +8,7 @@ import Card from "@mui/material/Card"
 import {MOVIES_API_KEY} from "../constants/common"
 import "./style/watchlist.css"
 import {useNavigate} from "react-router-dom"
+import DeleteIcon from '@mui/icons-material/Delete';
 
 export default function MoviesWatchlist() {
   const [watchlist, setWatchlist] = useState([])
@@ -85,7 +86,7 @@ export default function MoviesWatchlist() {
                   handleClick(movie.id)
                 }}
                 style={{cursor: "pointer"}}
-                src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+                src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path?movie.backdrop_path : movie.poster_path }`}
               />
             </AspectRatio>
             <div
@@ -93,7 +94,8 @@ export default function MoviesWatchlist() {
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
-                justifyContent: "space-around"
+                justifyContent: "space-around",
+                padding: '5px'
               }}
             >
               <div>
@@ -102,12 +104,12 @@ export default function MoviesWatchlist() {
               </div>
               <button
                 className='removeFavorite'
-                style={{padding: "5px"}}
+                style={{width:'50px',height:`50px`,textAlign:'center'}}
                 onClick={() => {
                   removeFavorite(movie.id)
                 }}
               >
-                Remove from watchlist
+                <DeleteIcon />
               </button>
             </div>
           </Card>

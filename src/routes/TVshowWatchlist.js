@@ -8,6 +8,8 @@ import Card from "@mui/material/Card"
 import {MOVIES_API_KEY} from "../constants/common"
 import "./style/watchlist.css"
 import {useNavigate} from "react-router-dom"
+import DeleteIcon from '@mui/icons-material/Delete';
+
 
 export default function TvShowWatchlist() {
   const [watchlist, setWatchlist] = useState([])
@@ -103,12 +105,12 @@ export default function TvShowWatchlist() {
               </div>
               <button
                 className='removeFavorite'
-                style={{padding: "5px"}}
+                style={{width:'50px',height:`50px`,textAlign:'center'}}
                 onClick={() => {
                   removeFavorite(movie.id)
                 }}
               >
-                Remove from watchlist
+                <DeleteIcon />
               </button>
             </div>
           </Card>
