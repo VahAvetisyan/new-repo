@@ -4,6 +4,7 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { auth, db, storage } from "../firebase/firebase";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import * as React from "react";
+import Input from "@mui/joy/Input";
 
 
 export default function TabsBottomNavExample() {
@@ -69,16 +70,16 @@ export default function TabsBottomNavExample() {
                 alt="avatar"
               />
             )}
-            <input type="file" name="file" onChange={handleImageChange} />
+            <Input type="file" name="file" onChange={handleImageChange} />
             <button id="upload-button" onClick={handleSubmit}>
               Upload Image
             </button>
           </div>
           {editingMode ? (
-            <div id="info">
+            <span id="info" style={{display:"inline-block"}}>
               <h3>
                 New Username:
-                <input
+                <Input
                   type="text"
                   id="edit-username"
                   onChange={(e) => setNewUsername(e.target.value)}
@@ -87,7 +88,7 @@ export default function TabsBottomNavExample() {
               <button onClick={onSaveButtonClick}>
                 <b>SAVE</b>
               </button>
-            </div>
+            </span>
           ) : (
             <div id="info">
               <h3>Username: {userName}</h3>
