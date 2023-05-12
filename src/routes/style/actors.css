@@ -23,8 +23,16 @@
   margin-bottom: 35px;
 }
 
+
+@media  screen  and (max-width:1445px) and (min-width:800px){
+  #buttons-div {
+  margin: auto;
+  margin-right: 70px;
+}
+}
 #buttons-div {
   margin: auto;
+  margin-right: 470px;
 }
 #buttons-div > button {
   font-size: 18px;
@@ -32,7 +40,7 @@
   height: 50px;
   text-align: center;
   border-radius: 10px;
-  background-color: #105f94;
+
 }
 #buttons-div *{
   margin-top: 25px;
