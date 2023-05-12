@@ -1,3 +1,6 @@
+@import url("http://fonts.googleapis.com/css?family=Open+Sans:400,700");
+
+
 * {
   margin: 0;
   padding: 0;
@@ -13,7 +16,8 @@ body {
 header {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.07), 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   color: #ffffff;
-  background-color: #222222;
+  background-color: #222222; 
+ 
 }
 
 .nav-area {
@@ -192,4 +196,7 @@ button {
 .signInSignUpButtons button a {
   color: white;
   text-decoration: none;
+}
+.logo{
+ font: normal 36px "Cookie", cursive;
 }
