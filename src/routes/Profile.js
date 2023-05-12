@@ -53,7 +53,6 @@ export default function TabsBottomNavExample() {
         );
     });
   };
-  const colors = ["primary", "info", "danger", "success"];
 
   return (
     <>

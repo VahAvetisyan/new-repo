@@ -60,7 +60,6 @@ export default function MoviePage() {
 
   const favoriteChanging = async () => {
     if(auth.currentUser){
-      console.log((auth));
       const favoriteRef = doc(db, "Users", `${auth?.currentUser.uid}`);
       if(!isFavorite){
       setIsFavorite(!isFavorite)
