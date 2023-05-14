@@ -6,7 +6,8 @@ import { useNavigate } from "react-router-dom";
 export default function Search() {
   const navigate = useNavigate();
   let [searchValue, setSearchValue] = useState("");
-  let [searchResult, setSearchResult] = useState([]);
+  let [MoviesSearchResult, setMoviesSearchResult] = useState([]);
+  let [TvShowsSearchResult, setTvShowsSearchResult] = useState([]);
   const api_key = "8cc8bb5915e1ce414955be2f44bcb790";
 
   const getSearchResult = async () => {
@@ -14,20 +15,28 @@ export default function Search() {
       `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&language=en-US&query=${searchValue}&page=1&include_adult=false`
     );
     let jsonData = await response.json();
-    setSearchResult([])
-    setSearchResult(jsonData.results);
+    setMoviesSearchResult([])
+    setMoviesSearchResult(jsonData.results);
+    let response2 = await fetch(
+      `https://api.themoviedb.org/3/search/tv?api_key=${api_key}&language=en-US&query=${searchValue}&page=1&include_adult=false`
+    );
+    let jsonData2 = await response2.json();
+    setTvShowsSearchResult([])
+    setTvShowsSearchResult(jsonData2.results);
   };
   useEffect(() => {
     getSearchResult();
   }, [searchValue]);
   const keyDownHandler = (e) => {
     if (e.code === "Enter") {
-      navigate("search-result", { state: { movies: searchResult } });
+      navigate("search-result", { state: { movies: MoviesSearchResult, tvShows: TvShowsSearchResult } });
     }
   };
   const onClickHandler = () => {
-    navigate("search-result", { state: { movies: searchResult } });
+    navigate("search-result", { state: { movies: MoviesSearchResult, tvShows: TvShowsSearchResult } });
   };
+
+  
 
   return (
     <div id="search-div">

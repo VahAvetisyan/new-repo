@@ -1,46 +1,72 @@
-import React, { useEffect, useState } from "react";
-import "./style/actors.css";
-import { useLocation, useNavigate } from "react-router-dom";
-import "./style/responsive.css";
-const MoviesNowPlaying = () => {
-  let [movies, setMovies] = useState([]);
-  const navigate = useNavigate()
-  const location = useLocation("search-result");
-  let moviesArr = location.state.movies;
+import * as React from 'react';
+import PropTypes from 'prop-types';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import MoviesSearchResult from './MoviesSearchResult';
+import TvShowsSearchResult from './TvShowsSearchResult';
+import './style/search.css'
 
-
-
-  useEffect(() => {
-    setMovies(moviesArr);
-  }, [moviesArr]);
-
-  const handlerOnClick = (movie, id) => {
-    navigate(`/movie/${id}`,{state:{
-      movie: movie,
-    }})
-  }
-
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
 
   return (
-    <div id="actors">
-      <h2>Search Results:</h2>
-      <div id="actors-imgs-container">
-        {movies.map((movie) =>
-          movie.poster_path ? (
-            <div key={movie.original_title}  onClick={()=>{handlerOnClick(movie, movie.id)}}>
-              <img
-                className="actors-img"
-                key={movie.original_title}
-                src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-                alt="movie"
-              />
-              <h3>{movie.title}</h3>
-            </div>
-          ) : null
-        )}
-      </div>
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`vertical-tabpanel-${index}`}
+      aria-labelledby={`vertical-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
     </div>
   );
+}
+
+TabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
 };
 
-export default MoviesNowPlaying;
+function a11yProps(index) {
+  return {
+    id: `vertical-tab-${index}`,
+    'aria-controls': `vertical-tabpanel-${index}`,
+  };
+}
+
+export default function VerticalTabs() {
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+  return (
+    <div style={{display: 'flex'}} id='searchFilter'>
+      <Tabs
+        orientation="vertical"
+        variant="scrollable"
+        value={value}
+        onChange={handleChange}
+        aria-label="Vertical tabs"
+        sx={{ borderRight: 1, borderColor: 'divider' }}
+      >
+        <Tab className='filterItem' label="Movies" {...a11yProps(0)} sx={{color:'white'}}/>
+        <Tab className='filterItem' label="TV SHOWS" {...a11yProps(1)} sx={{color:'white'}}/>
+      </Tabs>
+      <TabPanel value={value} index={0}>
+        <MoviesSearchResult />
+      </TabPanel>
+      <TabPanel value={value} index={1}>
+        <TvShowsSearchResult />
+      </TabPanel>
+      </div>
+  );
+}

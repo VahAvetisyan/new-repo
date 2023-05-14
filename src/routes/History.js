@@ -6,6 +6,7 @@ import TabList from "@mui/lab/TabList"
 import TabPanel from "@mui/lab/TabPanel"
 import MoviesHistory from "./MoviesHistory"
 import TvShowsHistory from "./TvShowsHistory"
+import './style/search.css'
 
 export default function History() {
   const [value, setValue] = React.useState("1")
@@ -19,8 +20,8 @@ export default function History() {
       <TabContext value={value}>
         <Box sx={{borderBottom: 1, borderColor: "divider"}}>
           <TabList onChange={handleChange} aria-label='lab API tabs example'>
-            <Tab label='Movies' value='1' />
-            <Tab label='TV shows' value='2' />
+            <Tab className='filterItem' label='Movies' value='1' />
+            <Tab className='filterItem' label='TV shows' value='2' />
           </TabList>
         </Box>
         <TabPanel value='1'>
