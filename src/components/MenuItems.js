@@ -17,7 +17,6 @@ const MenuItems = ({ items, depthLevel }) => {
     document.addEventListener("mousedown", handler);
     document.addEventListener("touchstart", handler);
     return () => {
-      // Cleanup the event listener
       document.removeEventListener("mousedown", handler);
       document.removeEventListener("touchstart", handler);
     };
@@ -70,7 +69,7 @@ const MenuItems = ({ items, depthLevel }) => {
             dropdown={dropdown}
           />
         </>
-      ) : !items.url && items.submenu ? (
+      ) : !items.url? (
         <>
           <button
             type="button"

@@ -56,8 +56,7 @@ export default function TabsBottomNavExample() {
   };
 
   return (
-    <>
-      <div>
+  
         <div id="profile" style={{ marginBottom: "100px" }}>
           <div id="profile-page">
             {url ? (
@@ -69,7 +68,7 @@ export default function TabsBottomNavExample() {
                 alt="avatar"
               />
             )}
-            <Input type="file" name="file" onChange={handleImageChange} />
+            <Input sx={{backgroundColor:'transparent', border: 'none', color: 'white', paddingLeft: 0}} type="file" name="file" onChange={handleImageChange} />
             <button id="upload-button" onClick={handleSubmit}>
               Upload Image
             </button>
@@ -97,7 +96,7 @@ export default function TabsBottomNavExample() {
             </div>
           )}
         </div>
-      </div>
-    </>
+     
+   
   );
 }

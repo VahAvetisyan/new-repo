@@ -29,7 +29,7 @@ const MoviesSearchResult = () => {
       <div id="actors-imgs-container">
         {movies.map((movie) =>
           movie.poster_path ? (
-            <div key={movie.original_title}  onClick={()=>{handlerOnClick(movie, movie.id)}}>
+            <div style={{minWidth: '200px', marginRight: '20px'}} key={movie.original_title} onClick={()=>{handlerOnClick(movie, movie.id)}}>
               <img
                 className="actors-img"
                 key={movie.original_title}
