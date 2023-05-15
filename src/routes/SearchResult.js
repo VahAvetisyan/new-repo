@@ -49,7 +49,7 @@ export default function VerticalTabs() {
   };
 
   return (
-    <div style={{display: 'flex'}} id='searchFilter'>
+    <div style={{display: 'grid'}} id='searchFilter'>
       <Tabs
         orientation="vertical"
         variant="scrollable"

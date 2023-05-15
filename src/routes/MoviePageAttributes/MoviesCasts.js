@@ -15,7 +15,7 @@ export default function Casts(props) {
       `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${api_key}&language=en-US`
     )
     let jsonData = await response.json()
-    setCasts(jsonData.cast.slice(0, 15))
+    setCasts(jsonData.cast.slice(0, 10))
   }
 
   useEffect(() => {

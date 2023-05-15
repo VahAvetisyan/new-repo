@@ -7,9 +7,9 @@ let responsiveReducer = createSlice({
   initialState,
   reducers: {
     setScreenSize: (state, {payload}) => {
-      console.log(payload,'11')
+    
       state = payload
-      console.log(payload, "changed");
+     
     }
   }
 })
