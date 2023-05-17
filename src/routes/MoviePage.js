@@ -11,6 +11,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import { auth, db } from "../firebase/firebase";
 import { doc, updateDoc, arrayUnion, arrayRemove, getDoc } from "firebase/firestore";
 import { MOVIES_API_KEY } from "../constants/common";
+import ReactPlayer from 'react-player'
 
 export default function MoviePage() {
   const { movieId } = useParams();
@@ -104,6 +105,7 @@ export default function MoviePage() {
         backgroundSize: "cover",
       }}
     >
+      
       <div id="homepage-poster">
         <img
           id="home-img"
@@ -147,6 +149,7 @@ export default function MoviePage() {
                 )}
               </div>
             </div>
+            
             <p style={{ marginLeft: 20 }}>({movie.vote_count} votes)</p>
           </div>
         </div>
@@ -154,15 +157,7 @@ export default function MoviePage() {
       <MoviesCasts id={movie.id} />
       <div className="video">
         {videos.map((el) => (
-          <iframe 
-          key={el.key} 
-          width="400" 
-          height="250" 
-          src={`https://www.youtube.com/embed/${el.key}`} 
-          title="YouTube video player" 
-          frameBorder="0" 
-          allowFullScreen="allowfullscreen"
-          ></iframe>
+          <ReactPlayer url={`https://www.youtube.com/embed/${el.key}`} />
         ))}
       </div>
       <SimilarMovies id={movie.id} />
