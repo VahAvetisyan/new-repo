@@ -15,7 +15,6 @@ const SharedTvShows = (props) => {
       `https://api.themoviedb.org/3/tv/${type}?api_key=${MOVIES_API_KEY}&language=en-US&page=${page}`
     )
     let jsonData = await response.json()
-    console.log(jsonData);
     setMovie(jsonData.results)
   }
 

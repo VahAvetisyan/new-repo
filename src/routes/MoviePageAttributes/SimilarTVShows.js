@@ -18,7 +18,6 @@ export default function SimilarTVShows(props) {
       `https://api.themoviedb.org/3/tv/${id}/similar?api_key=${api_key}&language=en-US&page=1`
     )
     let jsonData = await response.json()
-    console.log(jsonData)
     setSimilarMovies(jsonData.results)
   }
 

@@ -83,8 +83,11 @@ export default function MoviePage() {
     }
   }, [movieId]);
 
-  const onVideoClick = (id)=>{
-    console.log(id);
+  const onStartHandle = async ()=>{
+    const historyRef = doc(db, "Users", `${auth?.currentUser.uid}`);
+    await updateDoc(historyRef, {
+      moviesHistory: arrayUnion(`${movieId}`),
+    })
   }
 
 
@@ -157,7 +160,7 @@ export default function MoviePage() {
       <MoviesCasts id={movie.id} />
       <div className="video">
         {videos.map((el) => (
-          <ReactPlayer url={`https://www.youtube.com/embed/${el.key}`} />
+          <ReactPlayer onStart={()=>{onStartHandle()}} url={`https://www.youtube.com/embed/${el.key}`} />
         ))}
       </div>
       <SimilarMovies id={movie.id} />

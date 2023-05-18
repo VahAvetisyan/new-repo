@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from "react";
 import Avatar from "@mui/material/Avatar";
-import "./comments.css";
 import { setSnackBarData } from "../../redux/reducers/snackBarReducer";
 import { useDispatch } from "react-redux";
 import { LinearProgress } from "@mui/material";
 import { auth, db } from "../../firebase/firebase";
-import { doc, getDoc } from "firebase/firestore";
+import { addDoc, collection, doc, getDoc, getDocs, query, where} from "firebase/firestore";
+import "./comments.css";
 
-export default function MovieReviews(props) {
-  const id = props.id;
+export default function MovieReviews({id}) {
   const [review, setReview] = useState([]);
+  const [url, setUrl] = useState(null)
+  const [userName, setUserName] = useState("")
   const [newComment, setNewComment] = useState("");
-  const [url, setUrl] = useState(null);
-  const [userName, setUserName] = useState("");
   const dispatch = useDispatch();
 
   const getVideos = async () => {
@@ -24,27 +23,40 @@ export default function MovieReviews(props) {
     setReview(jsonData.results);
   };
 
-  const docRef = doc(db, "Users", `${auth.lastNotifiedUid}`);
+  const getComments = async()=>{
+    const docRef = collection(db, "Comments");
+    const q = await getDocs(query(docRef, where("entityId", "==", id)));
+    q.forEach(el=>{
+      review.push(el.data())
+    })
+  }
 
-    const docSnap = getDoc(docRef);
-    docSnap.then((el) => {
-      setUserName(el.data().username);
-      setUrl(el.data().photoUrl)
-    });
+  const docRef = doc(db, "Users", `${auth.lastNotifiedUid}`)
+
+  const docSnap = getDoc(docRef)
+  docSnap.then((el) => {
+    setUserName(el.data().username)
+    setUrl(el.data().photoUrl)
+  })
+  
   
   useEffect(() => {
     getVideos();
+    getComments()
   }, [id]);
 
-  const HandlerOnAddBtnClick = () => {
+  const HandlerOnAddBtnClick = async () => {
     {if(newComment !== ""){
-      review.unshift(
-          { author: userName,
-            author_details: {
-              avatar_path: "",
-          },
-          content: newComment ,
-        });
+      try {
+        await addDoc(collection(db, "Comments"), {
+          content: newComment,
+          entityId: id,
+          author: userName,
+          author_details: {
+            name: userName,
+            avatar_path: url
+          }
+        })
         dispatch(
           setSnackBarData({
             open: true,
@@ -52,7 +64,15 @@ export default function MovieReviews(props) {
             severity: "success",
           })
         );
-        setNewComment("")
+      } catch (e) {
+        dispatch(
+          setSnackBarData({
+            open: true,
+            message: "Please Sign Up or Sign In",
+            severity: "error",
+          })
+        );
+      }
     }else{
       dispatch(
         setSnackBarData({
@@ -95,10 +115,7 @@ export default function MovieReviews(props) {
                 variant="circular"
                 sx={{ width: 45, height: 45 }}
                 alt={comment.author}
-                src={
-                  comment.author_details.avatar_path
-                    ? comment.author_details.avatar_path.slice(1)
-                    : url}
+                src={comment.author_details.avatar_path}
               />
               <h4>{comment.author}</h4>
             </div>

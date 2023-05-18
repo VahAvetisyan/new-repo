@@ -10,6 +10,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite"
 import {auth, db} from "../firebase/firebase"
 import {doc,updateDoc,arrayUnion,arrayRemove,getDoc} from "firebase/firestore"
 import {MOVIES_API_KEY} from "../constants/common"
+import ReactPlayer from "react-player"
 
 export default function MoviePage() {
   const {tvId} = useParams()
@@ -81,6 +82,14 @@ export default function MoviePage() {
     getVideos()
   }, [movie])
 
+  const onStartHandle = async ()=>{
+    console.log(tvId);
+    const historyRef = doc(db, "Users", `${auth?.currentUser.uid}`);
+    await updateDoc(historyRef, {
+      tvShowsHistory: arrayUnion(`${tvId}`),
+    })
+  }
+
   if (movieLoading || videoLoading) {
     return <LinearProgress />
   }
@@ -145,15 +154,7 @@ export default function MoviePage() {
       </div>
       <div className='video'>
         {videos.map((el) => (
-          <iframe
-            key={el.key}
-            width='400'
-            height='250'
-            src={`https://www.youtube.com/embed/${el.key}`}
-            title='YouTube video player'
-            frameBorder='0'
-            allowFullScreen='allowfullscreen'
-          ></iframe>
+          <ReactPlayer onStart={()=>{onStartHandle()}} url={`https://www.youtube.com/embed/${el.key}`} />
         ))}
       </div>
       <SimilarTVShows id={movie.id} />
