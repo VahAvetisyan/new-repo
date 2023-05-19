@@ -13,22 +13,16 @@ export default function MovieReviews({id}) {
   const [userName, setUserName] = useState("")
   const [newComment, setNewComment] = useState("");
   const dispatch = useDispatch();
+  let comments=[]
 
-  const getVideos = async () => {
-    let api_key = "8cc8bb5915e1ce414955be2f44bcb790";
-    let response = await fetch(
-      `https://api.themoviedb.org/3/tv/${id}/reviews?api_key=${api_key}&language=en-US&page=1`
-    );
-    let jsonData = await response.json();
-    setReview(jsonData.results);
-  };
 
   const getComments = async()=>{
     const docRef = collection(db, "Comments");
     const q = await getDocs(query(docRef, where("entityId", "==", id)));
     q.forEach(el=>{
-      review.push(el.data())
+      comments.unshift(el.data());
     })
+    setReview(comments);
   }
 
   const docRef = doc(db, "Users", `${auth.lastNotifiedUid}`)
@@ -41,12 +35,12 @@ export default function MovieReviews({id}) {
   
   
   useEffect(() => {
-    getVideos();
+
     getComments()
-  }, [id]);
+  }, [review]);
 
   const HandlerOnAddBtnClick = async () => {
-    {if(newComment !== ""){
+    if(newComment !== ""){
       try {
         await addDoc(collection(db, "Comments"), {
           content: newComment,
@@ -81,13 +75,10 @@ export default function MovieReviews({id}) {
           severity: "error",
         })
       );
-    }}   
+    }
   };
 
-  if (!review.length) {
-    return <LinearProgress />;
-  }
-
+ 
   return (
     <div>
       <div id="add-comment">
