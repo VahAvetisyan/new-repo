@@ -41,9 +41,10 @@
 .video {
   display: flex;
   justify-content: space-evenly;
-  margin: auto;
+ 
 }
 
-.video iframe {
+.video * {
+  height: 300px;
   margin: 0px 10px;
 }

@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./style/moviePage.css";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
-import MovieReviews from "./MoviePageAttributes/MovieReviews";
+import Reviews from "../Shared/Reviews";
 import { LinearProgress } from "@mui/material";
 import SimilarMovies from "./MoviePageAttributes/SimilarMovies";
 import MoviesCasts from "./MoviePageAttributes/MoviesCasts";
@@ -108,7 +108,6 @@ export default function MoviePage() {
         backgroundSize: "cover",
       }}
     >
-      
       <div id="homepage-poster">
         <img
           id="home-img"
@@ -152,7 +151,7 @@ export default function MoviePage() {
                 )}
               </div>
             </div>
-            
+
             <p style={{ marginLeft: 20 }}>({movie.vote_count} votes)</p>
           </div>
         </div>
@@ -160,11 +159,17 @@ export default function MoviePage() {
       <MoviesCasts id={movie.id} />
       <div className="video">
         {videos.map((el) => (
-          <ReactPlayer onStart={()=>{onStartHandle()}} url={`https://www.youtube.com/embed/${el.key}`} />
+          <ReactPlayer
+            onStart={() => {
+              onStartHandle();
+            }}
+            url={`https://www.youtube.com/embed/${el.key}`}
+            controls={true}
+          />
         ))}
       </div>
       <SimilarMovies id={movie.id} />
-      <MovieReviews id={movie.id} />
+      <Reviews id={movie.id} />
     </div>
   );
 }

@@ -1,46 +1,51 @@
 import React, { useEffect, useState } from "react";
 import Avatar from "@mui/material/Avatar";
-import { setSnackBarData } from "../../redux/reducers/snackBarReducer";
+import { setSnackBarData } from "../redux/reducers/snackBarReducer";
 import { useDispatch } from "react-redux";
 import { LinearProgress } from "@mui/material";
-import { auth, db } from "../../firebase/firebase";
-import { addDoc, collection, doc, getDoc, getDocs, query, where} from "firebase/firestore";
-import "./comments.css";
+import { auth, db } from "../firebase/firebase";
+import {
+  addDoc,
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
+import "../routes/MoviePageAttributes/comments.css";
 
-export default function MovieReviews({id}) {
+export default function Reviews({ id }) {
   const [review, setReview] = useState([]);
-  const [url, setUrl] = useState(null)
-  const [userName, setUserName] = useState("")
+  const [url, setUrl] = useState(null);
+  const [userName, setUserName] = useState("");
   const [newComment, setNewComment] = useState("");
   const dispatch = useDispatch();
-  let comments=[]
+  let comments = [];
 
-
-  const getComments = async()=>{
+  const getComments = async () => {
     const docRef = collection(db, "Comments");
     const q = await getDocs(query(docRef, where("entityId", "==", id)));
-    q.forEach(el=>{
+    q.forEach((el) => {
       comments.unshift(el.data());
-    })
+    });
     setReview(comments);
-  }
+  };
 
-  const docRef = doc(db, "Users", `${auth.lastNotifiedUid}`)
+  const docRef = doc(db, "Users", `${auth.lastNotifiedUid}`);
 
-  const docSnap = getDoc(docRef)
+  const docSnap = getDoc(docRef);
   docSnap.then((el) => {
-    setUserName(el.data().username)
-    setUrl(el.data().photoUrl)
-  })
-  
-  
-  useEffect(() => {
+    setUserName(el.data().username);
+    setUrl(el.data().photoUrl);
+  });
 
-    getComments()
+  useEffect(() => {
+    getComments();
   }, [review]);
 
-  const HandlerOnAddBtnClick = async () => {
-    if(newComment !== ""){
+  const handlerOnAddBtnClick = async () => {
+    if (newComment !== "") {
       try {
         await addDoc(collection(db, "Comments"), {
           content: newComment,
@@ -48,9 +53,9 @@ export default function MovieReviews({id}) {
           author: userName,
           author_details: {
             name: userName,
-            avatar_path: url
-          }
-        })
+            avatar_path: url,
+          },
+        });
         dispatch(
           setSnackBarData({
             open: true,
@@ -67,7 +72,7 @@ export default function MovieReviews({id}) {
           })
         );
       }
-    }else{
+    } else {
       dispatch(
         setSnackBarData({
           open: true,
@@ -78,11 +83,10 @@ export default function MovieReviews({id}) {
     }
   };
 
- 
   return (
     <div>
       <div id="add-comment">
-        <Avatar src={url}/>
+        <Avatar src={url} />
         <input
           type="text"
           onChange={(e) => {
@@ -91,7 +95,7 @@ export default function MovieReviews({id}) {
         />
         <button
           onClick={() => {
-            HandlerOnAddBtnClick();
+            handlerOnAddBtnClick();
           }}
         >
           ADD COMMENT
