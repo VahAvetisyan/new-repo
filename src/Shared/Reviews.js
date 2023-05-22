@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import { setSnackBarData } from "../redux/reducers/snackBarReducer";
 import { useDispatch } from "react-redux";
-import { LinearProgress } from "@mui/material";
 import { auth, db } from "../firebase/firebase";
 import {
   addDoc,
@@ -10,6 +9,7 @@ import {
   doc,
   getDoc,
   getDocs,
+  orderBy,
   query,
   where,
 } from "firebase/firestore";
@@ -25,7 +25,7 @@ export default function Reviews({ id }) {
 
   const getComments = async () => {
     const docRef = collection(db, "Comments");
-    const q = await getDocs(query(docRef, where("entityId", "==", id)));
+    const q = await getDocs(query(docRef, where("entityId", "==", id)), orderBy('addingTime', 'asc'));
     q.forEach((el) => {
       comments.unshift(el.data());
     });
@@ -36,7 +36,7 @@ export default function Reviews({ id }) {
 
   const docSnap = getDoc(docRef);
   docSnap.then((el) => {
-    setUserName(el.data().username);
+    setUserName(el.data()?.username);
     setUrl(el.data().photoUrl);
   });
 
@@ -51,9 +51,10 @@ export default function Reviews({ id }) {
           content: newComment,
           entityId: id,
           author: userName,
+          addingTime: Date.now(),
           author_details: {
             name: userName,
-            avatar_path: url,
+            avatar_path: url? url: null,
           },
         });
         dispatch(

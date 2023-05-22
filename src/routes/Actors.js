@@ -49,7 +49,7 @@ const Actors = () => {
             <img
               className="actors-img"
               key={actor.name}
-              src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
+              src={`https://image.tmdb.org/t/p/w500/${actor.profile_path?actor.profile_path:null}`}
               alt="actor"
             />
             <h3>{actor.name}</h3>
