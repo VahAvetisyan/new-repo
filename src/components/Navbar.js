@@ -22,19 +22,24 @@ const Navbar = (props) => {
   return (
     <nav>
       {loggedInUser ? (
-        <ul className="menus">
+        <ul className="menus" style={{ color: "#66FCF1" }}>
           {menuItems.map((menu, index) => {
-            const depthLevel = 0
+            const depthLevel = 0;
             return (
               <MenuItems items={menu} key={index} depthLevel={depthLevel} />
-            )
+            );
           })}
           <Search />
           {profile.map((menu, index) => {
-            const depthLevel = 0
+            const depthLevel = 0;
             return (
-              <MenuItems items={menu} key={index} depthLevel={depthLevel} />
-            )
+              <MenuItems
+                items={menu}
+                key={index}
+                depthLevel={depthLevel}
+                style={{ background: "#45A29E" }}
+              />
+            );
           })}
           <div className="logOut">
             <button onClick={onLogOutClick}>
@@ -45,22 +50,21 @@ const Navbar = (props) => {
       ) : (
         <ul className="menus">
           {menuItems.map((menu, index) => {
-            const depthLevel = 0
+            const depthLevel = 0;
             return (
               <MenuItems items={menu} key={index} depthLevel={depthLevel} />
-            )
+            );
           })}
           <Search />
           <div className="signInSignUpButtons">
             <button>
-              <a href="/registation" >Sing In/Sign Up</a>
+              <a href="/registation">Sing In/Sign Up</a>
             </button>
-           
           </div>
         </ul>
       )}
     </nav>
-  )
+  );
 }
 
 export default Navbar

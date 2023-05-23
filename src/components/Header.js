@@ -1,15 +1,15 @@
 import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
-
+import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
 const Header = (props) => {
   let loggedInUser = props.isLoggedInUser;
   return (
-    <header>
+    <header style={{ background: "black" }}>
       <div className="nav-area">
-        <Link to="/" className="logo">
-          Cinema ASD
+        <Link to="/" className="logo" style={{ color: "#66FCF1" }}>
+          <LocalMoviesIcon /> Cinema ASD
         </Link>
-        <Navbar isLoggedInUser={loggedInUser}/>
+        <Navbar isLoggedInUser={loggedInUser} />
       </div>
     </header>
   );

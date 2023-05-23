@@ -21,7 +21,7 @@ const ImageSlider = () => {
   }
 
   const handlerOnClick = (movie, id) => {
-    {
+    
       movie.media_type === "tv"
         ? navigate(`/tv-show/${id}`, {
             state: {
@@ -33,7 +33,7 @@ const ImageSlider = () => {
               movie: movie
             }
           })
-    }
+    
   }
 
   useEffect(() => {

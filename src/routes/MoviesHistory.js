@@ -45,7 +45,7 @@ export default function MoviesHistory() {
   }, []);
 
   if (history.length === 0) {
-    return "The history is совсем(вообще) empty";
+    return "The history is  empty";
   }
 
   async function removeFavorite(movieId) {

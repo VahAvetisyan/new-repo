@@ -16,6 +16,7 @@ import SimpleSnackbar from "./components/SnackBar";
 import Registration from "./components/sing in/SingIn";
 import SharedMovies from "./Shared/SharedMovies";
 import SharedTvShows from "./Shared/SharedTvShows";
+import Footer from "./components/Footer/Footer";
 
 const App = () => {
   const loggedInUser = useSelector(selectLoggedInUser);
@@ -37,15 +38,27 @@ const App = () => {
           <Route path="movies/">
             <Route path="popular" element={<SharedMovies type="popular" />} />
             <Route path="upcoming" element={<SharedMovies type="upcoming" />} />
-            <Route path="now-playing" element={<SharedMovies type="now_playing" />} />
-            <Route path="top-rated" element={<SharedMovies type="top_rated" />} />
+            <Route
+              path="now-playing"
+              element={<SharedMovies type="now_playing" />}
+            />
+            <Route
+              path="top-rated"
+              element={<SharedMovies type="top_rated" />}
+            />
           </Route>
           <Route path="movie/:movieId" element={<MoviePage />} />
           <Route path="tv-shows/">
             <Route path="popular" element={<SharedTvShows type="popular" />} />
-            <Route path="airing-today" element={<SharedTvShows type="airing_today" />} />
+            <Route
+              path="airing-today"
+              element={<SharedTvShows type="airing_today" />}
+            />
             <Route path="on-tv" element={<SharedTvShows type="on_the_air" />} />
-            <Route path="top-rated" element={<SharedTvShows type="top_rated" />} />
+            <Route
+              path="top-rated"
+              element={<SharedTvShows type="top_rated" />}
+            />
           </Route>
           <Route path="tv-show/:tvId" element={<TvShowPage />} />
           <Route path="people/:actorId" element={<ActorsBio />} />
@@ -63,6 +76,9 @@ const App = () => {
           <Route path="*" element={<Navigate replace to="/" />} />
         </Route>
       </Routes>
+      
+        
+     
     </>
   );
 };

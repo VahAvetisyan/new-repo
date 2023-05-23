@@ -12,11 +12,11 @@ import History from './History';
 
 export default function TabsVertical() {
   return (
-    <div style={{marginLeft:'200px'}}>
+    <div>
       <Tabs
         aria-label="Vertical tabs"
         orientation="vertical"
-        sx={{ minWidth: 300, borderRadius: "lg" }}
+        sx={{ minWidth: 300, borderRadius: "lg", background: " #333030" }}
       >
         <TabList>
           <Tab>
