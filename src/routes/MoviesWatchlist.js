@@ -45,7 +45,7 @@ export default function MoviesWatchlist() {
   }, [])
 
   if (watchlist.length === 0) {
-    return "The watchlist is совсем(вообще) empty"
+    return "The watchlist is  empty"
   }
 
   async function removeFavorite(movieId) {

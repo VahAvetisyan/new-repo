@@ -57,7 +57,7 @@ const SharedTvShows = (props) => {
             window.scrollTo(0, 0)
           }}
         >
-          ⮜
+          Previous
         </button>
         <b>PAGE {page}</b>
         <button
@@ -66,7 +66,7 @@ const SharedTvShows = (props) => {
             window.scrollTo(0, 0)
           }}
         >
-          ⮞
+          Next
         </button>
       </div>
     </div>

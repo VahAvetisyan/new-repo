@@ -56,47 +56,57 @@ export default function TabsBottomNavExample() {
   };
 
   return (
-  
-        <div id="profile" style={{ marginBottom: "100px" }}>
-          <div id="profile-page">
-            {url ? (
-              <img id="profile-picture" src={url} alt="avatar" />
-            ) : (
-              <img
-                id="profile-picture"
-                src={`https://firebasestorage.googleapis.com/v0/b/aca-project-35029.appspot.com/o/users%2Fdefault-avatar.jpg?alt=media&token=365ea4fa-30e6-42dc-aaca-876523d3158f`}
-                alt="avatar"
-              />
-            )}
-            <Input sx={{backgroundColor:'transparent', border: 'none', color: 'white', paddingLeft: 0}} type="file" name="file" onChange={handleImageChange} />
-            <button id="upload-button" onClick={handleSubmit}>
-              Upload Image
-            </button>
-          </div>
-          {editingMode ? (
-            <span id="info" style={{display:"inline-block"}}>
-              <h3>
-                New Username:
-                <Input
-                  type="text"
-                  id="edit-username"
-                  onChange={(e) => setNewUsername(e.target.value)}
-                />
-              </h3>
-              <button onClick={onSaveButtonClick}>
-                <b>SAVE</b>
-              </button>
-            </span>
-          ) : (
-            <div id="info">
-              <h3>Username: {userName}</h3>
-              <button onClick={onEditButtonClick}>
-                <b>EDIT</b>
-              </button>
-            </div>
-          )}
+    <div
+      id="profile"
+      style={{ marginBottom: "100px", background: " #0C0032" }}
+    >
+      <div id="profile-page">
+        {url ? (
+          <img id="profile-picture" src={url} alt="avatar" />
+        ) : (
+          <img
+            id="profile-picture"
+            src={`https://firebasestorage.googleapis.com/v0/b/aca-project-35029.appspot.com/o/users%2Fdefault-avatar.jpg?alt=media&token=365ea4fa-30e6-42dc-aaca-876523d3158f`}
+            alt="avatar"
+          />
+        )}
+        <Input
+          sx={{
+            backgroundColor: "transparent",
+            border: "none",
+            color: "white",
+            paddingLeft: 0,
+          }}
+          type="file"
+          name="file"
+          onChange={handleImageChange}
+        />
+        <button id="upload-button" onClick={handleSubmit}>
+          Upload Image
+        </button>
+      </div>
+      {editingMode ? (
+        <span id="info" style={{ display: "inline-block" }}>
+          <h3>
+            New Username:
+            <Input
+              type="text"
+              id="edit-username"
+              onChange={(e) => setNewUsername(e.target.value)}
+            />
+          </h3>
+          <button onClick={onSaveButtonClick}>
+            <b>SAVE</b>
+          </button>
+        </span>
+      ) : (
+        <div id="info">
+          <h3>Username: {userName}</h3>
+          <button onClick={onEditButtonClick}>
+            <b>EDIT</b>
+          </button>
         </div>
-     
-   
+      )}
+    </div>
   );
 }

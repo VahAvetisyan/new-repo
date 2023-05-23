@@ -24,8 +24,12 @@ export default function Reviews({ id }) {
   let comments = [];
 
   const getComments = async () => {
+
+    
+
     const docRef = collection(db, "Comments");
     const q = await getDocs(query(docRef, where("entityId", "==", id)), orderBy('addingTime', 'asc'));
+
     q.forEach((el) => {
       comments.unshift(el.data());
     });
@@ -49,6 +53,7 @@ export default function Reviews({ id }) {
       try {
         await addDoc(collection(db, "Comments"), {
           content: newComment,
+        
           entityId: id,
           author: userName,
           addingTime: Date.now(),

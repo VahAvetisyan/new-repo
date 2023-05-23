@@ -159,13 +159,16 @@ export default function MoviePage() {
       <MoviesCasts id={movie.id} />
       <div className="video">
         {videos.map((el) => (
-          <ReactPlayer
-            onStart={() => {
-              onStartHandle();
-            }}
-            url={`https://www.youtube.com/embed/${el.key}`}
-            controls={true}
-          />
+          <>
+            <ReactPlayer
+              onStart={() => {
+                onStartHandle();
+              }}
+              url={`https://www.youtube.com/embed/${el.key}`}
+              controls={true}
+            />
+           
+          </>
         ))}
       </div>
       <SimilarMovies id={movie.id} />

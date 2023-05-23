@@ -18,7 +18,7 @@ export default function Casts({id}) {
 
   useEffect(() => {
     GetCredits()
-  }, [id])
+  }, [])
 
   function handleClick(actor, id) {
     navigate(`/people/${id}`, {

@@ -46,7 +46,7 @@ export default function TvShowWatchlist() {
   }, [])
 
   if (history.length === 0) {
-    return "The history is совсем(вообще) empty"
+    return "The history is  empty"
   }
 
   async function removeFavorite(movieId) {
