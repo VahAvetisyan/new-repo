@@ -8,9 +8,9 @@ body{
 	margin: auto;
 	width: 350px;
 	height: 500px;
-	background: red;
+	background: rgba(255, 0, 0, 0);
 	overflow: hidden;
-	background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+	background-color: #8eb484;
 	border-radius: 10px;
 	box-shadow: 5px 20px 50px #000; 
 }
@@ -54,7 +54,7 @@ label{
 	justify-content: center;
 	display: block;
 	color: #fff;
-	background: #573b8a;
+	background: #759b6c;
 	font-size: 1em;
 	font-weight: bold;
 	margin-top: 20px;
@@ -65,7 +65,8 @@ label{
 	cursor: pointer;
 }
 button:hover{
-	background: #6d44b8;
+	background: #316942;
+	color: white
 }
 .login{
 	height: 460px;
@@ -75,7 +76,8 @@ button:hover{
 	transition: .8s ease-in-out;
 }
 .login label{
-	color: #573b8a;
+	padding-top: 15px;
+	color: #759b6c;
 	transform: scale(.6);
 }
 
@@ -89,7 +91,7 @@ button:hover{
 	transform: scale(.6);
 }
 .signInSignUpButtons button a{
- color: #1f472b
+ color: black
 }
 .signInSignUpButtons button:hover{
   background-color:#a0b89a ;

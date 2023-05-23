@@ -13,7 +13,7 @@
 
 input{
     width: 270px;
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 
@@ -25,15 +25,15 @@ input{
     cursor: pointer;
     margin: 0;
 }
+
 #upload-button:hover{
-    background-color: rgb(226, 177, 41);
+    background-color: #69a05b;
     cursor: pointer;
 }
 
 #info{
     margin: 20px;
     background-color: transparent;
- 
 }
 #info button{
     width: 100px;
@@ -43,7 +43,7 @@ input{
     padding: 5px;
 }
 #info button:hover{
-    background-color: rgb(255, 187, 0);
+    background-color: #69a05b;
     cursor: pointer;
 }
 

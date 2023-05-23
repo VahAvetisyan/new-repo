@@ -82,6 +82,7 @@ button span {
 .menu-items a:hover,
 .menu-items button:hover {
   background-color:#c6e0bf ;
+  color: black;
 }
 
 .arrow::after {
@@ -189,6 +190,7 @@ button {
 
 .logOut button:hover {
   background-color: #c6e0bf;
+  color: black;
 }
 
 .signInSignUpButtons button:hover {

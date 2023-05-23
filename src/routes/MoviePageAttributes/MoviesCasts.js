@@ -62,8 +62,8 @@ export default function Casts({id}) {
                     src={`https://image.tmdb.org/t/p/original/${cast.profile_path}`}
                     alt='actor'
                   />
-                  <h3 style={{color: "white"}}>{cast.name}</h3>
-                  <h5 style={{color: "white"}}>{cast.character}</h5>
+                  <h3 style={{color: "black"}}>{cast.name}</h3>
+                  <h5 style={{color: "black"}}>{cast.character}</h5>
                 </div>
               </div>
             ) : null

@@ -1,10 +1,8 @@
 import React, {useEffect, useState} from "react"
 import "./style/actors.css"
 import {useNavigate} from "react-router-dom"
-import {linkClasses} from "@mui/material"
 import "./style/responsive.css"
 import Responsive from "../Shared/Responsive"
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos"
 
 const Actors = () => {
   const navigate = useNavigate()
@@ -40,6 +38,7 @@ const Actors = () => {
         style={{gridTemplateColumns: `repeat($)`}}
       >
         {actors.map((actor) => (
+          actor.profile_path?
           <div
             key={actor.name}
             onClick={() => {
@@ -53,7 +52,7 @@ const Actors = () => {
               alt="actor"
             />
             <h3>{actor.name}</h3>
-          </div>
+          </div>:null
         ))}
       </div>
       <div id="buttons-div">

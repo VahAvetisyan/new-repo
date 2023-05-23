@@ -27,6 +27,7 @@
   #buttons-div {
     display: flex;
     justify-content: center;
+    align-items: center;
     margin-right: 200px;
   }
 }
@@ -41,7 +42,7 @@
 }
 #buttons-div {
   display: flex;
-
+  align-items: center;
   justify-content: center;
   margin-right: 100px;
 }
