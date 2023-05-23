@@ -4,13 +4,13 @@ import { getAuth } from "firebase/auth";
 import {getStorage} from "firebase/storage"
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCO2fI7rsCCL9ify9TpeG1YdeOlhIpa1fg",
-  authDomain: "aca-project-35029.firebaseapp.com",
-  projectId: "aca-project-35029",
-  storageBucket: "aca-project-35029.appspot.com",
-  messagingSenderId: "405437286231",
-  appId: "1:405437286231:web:9ce288d0e5234038b7e012",
-  measurementId: "G-DQ3G65G693"
+  apiKey: "AIzaSyBQaFCK0NjWwXpfivNfFaMKMVuw5HnGDPQ",
+  authDomain: "cinema-asd.firebaseapp.com",
+  projectId: "cinema-asd",
+  storageBucket: "cinema-asd.appspot.com",
+  messagingSenderId: "524411377279",
+  appId: "1:524411377279:web:bffa92b87d190dc802114a",
+  measurementId: "G-R7DDQK43GL"
 };
 
 const app = initializeApp(firebaseConfig);

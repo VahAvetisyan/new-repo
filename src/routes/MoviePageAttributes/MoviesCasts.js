@@ -4,18 +4,16 @@ import Slider from "react-slick"
 import {LinearProgress} from "@mui/material"
 import {useNavigate} from "react-router-dom"
 
-export default function Casts(props) {
+export default function Casts({id}) {
   const navigate = useNavigate()
-  const id = props.id
   const [casts, setCasts] = useState([])
-
   const GetCredits = async () => {
-    let api_key = "8cc8bb5915e1ce414955be2f44bcb790"
-    let response = await fetch(
-      `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${api_key}&language=en-US`
-    )
-    let jsonData = await response.json()
-    setCasts(jsonData.cast.slice(0, 10))
+    if(id){
+      let api_key = "8cc8bb5915e1ce414955be2f44bcb790"
+      let response = await fetch(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${api_key}&language=en-US`)
+      let jsonData = await response.json()
+      setCasts(jsonData.cast.slice(0, 10))
+    }
   }
 
   useEffect(() => {
