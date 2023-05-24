@@ -9,7 +9,8 @@
 body {
   font-family: sans-serif;
 
-  background-color: #e1eedd;
+  background:url("https://i.imgur.com/Tm1Hu2k.jpg");
+  background-attachment: fixed;
 }
 
 header {

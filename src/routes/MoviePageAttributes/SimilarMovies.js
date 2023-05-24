@@ -42,7 +42,10 @@ export default function SimilarMovies(props) {
     slidesToScroll: 1,
     lazyLoad: true,
     autoplay: true,
-    autoplaySpeed: 2000
+    autoplaySpeed: 2000,
+    // speed:2000
+   
+
   }
 
   if (!similarMovies) {
@@ -55,7 +58,7 @@ export default function SimilarMovies(props) {
         <h2>Similar Movies</h2>
       </div>
       <div className="imgslider">
-        <Slider {...settings}>
+        <Slider {...settings} >
           {similarMovies.map((movie) =>
             movie.poster_path ? (
               <div key={movie.id} id="imgs-container">

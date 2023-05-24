@@ -117,7 +117,7 @@ export default function MoviePage() {
         <div id="info">
           <h2>{movie.title}</h2>
           <h4>Release Date: {movie.release_date}</h4>
-          <h5>Discription: {movie.overview}</h5>
+          <h5>Description: {movie.overview}</h5>
           <div style={{ display: "flex", alignItems: "center" }}>
             <div style={{ width: 50, height: 50 }}>
               <CircularProgressbar

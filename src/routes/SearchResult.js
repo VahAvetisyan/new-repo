@@ -50,32 +50,33 @@ export default function VerticalTabs() {
   }
 
   return (
-    <div style={{display: "grid"}} id="searchFilter">
+    <div style={{ display: "grid" }} id="searchFilter">
       <Tabs
         orientation="vertical"
         variant="scrollable"
         value={value}
         onChange={handleChange}
         aria-label="Vertical tabs"
-        sx={{borderRight: 1, borderColor: "divider"}}
+        sx={{ borderRight: 1, borderColor: "divider" }}
       >
         <Tab
           className="filterItem"
           label="Movies"
           {...a11yProps(0)}
-          sx={{color: "white"}}
+          sx={{ color: "white" }}
+          style={{ color: "black" }}
         />
         <Tab
           className="filterItem"
           label="TV SHOWS"
           {...a11yProps(1)}
-          sx={{color: "white"}}
+          sx={{ color: "black" }}
         />
         <Tab
           className="filterItem"
           label="Actors"
           {...a11yProps(2)}
-          sx={{color: "white"}}
+          sx={{ color: "black" }}
         />
       </Tabs>
       <TabPanel value={value} index={0}>
@@ -88,5 +89,5 @@ export default function VerticalTabs() {
         <ActorSearchResult />
       </TabPanel>
     </div>
-  )
+  );
 }

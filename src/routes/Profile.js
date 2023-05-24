@@ -77,8 +77,9 @@ export default function TabsBottomNavExample() {
           type="file"
           name="file"
           onChange={handleImageChange}
+          
         />
-        <button id="upload-button" onClick={handleSubmit}>
+        <button id="upload-button" onClick={handleSubmit}   >
           Upload Image
         </button>
       </div>

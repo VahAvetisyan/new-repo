@@ -12,9 +12,13 @@ function Footer() {
     <>
       <footer className="footer-distributed">
         <div className="footer-left">
-          <h3>
-            Cinema<span>ASD</span>
-          </h3>
+          
+            <img
+              style={{ height: "60px" }}
+              src="https://i.imgur.com/u7D9vYW.png"
+              alt=""
+            />
+          
 
           <p className="footer-links">
             <a href="">Home</a>|<a href="#">About</a>|<a href="#">Contact</a>|
@@ -37,12 +41,14 @@ function Footer() {
 
           <div>
             <i className="fa fa-phone"></i>
-            <p>+1 7459754258</p>
+            <p>+010 101010</p>
           </div>
           <div>
             <i className="fa fa-envelope"></i>
             <p>
-              <a href="kraken@onionmail.org">kraken@onionmail.org</a>
+              <a href="mailto:cinemaasd@onionmail.org">
+                cinemaasd@onionmail.org
+              </a>
             </p>
           </div>
         </div>
@@ -69,7 +75,9 @@ function Footer() {
             <a href="">
               <LinkedInIcon />
             </a>
-            <a href=""><InstagramIcon/></a>
+            <a href="">
+              <InstagramIcon />
+            </a>
           </div>
         </div>
       </footer>

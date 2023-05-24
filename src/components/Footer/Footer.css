@@ -7,6 +7,7 @@ header h2 {
 /* The footer is fixed to the bottom of the page */
 
 .footer-distributed {
+  background: rgba(255, 255, 255, 0.356) ;
   box-sizing: border-box;
   width: 100%;
   text-align: left;
@@ -29,20 +30,20 @@ header h2 {
 }
 
 .footer-distributed h3 {
-  color: #e0ac1c;
+ color: #69a05b;
 
   font: normal 36px "Cookie", cursive;
   margin: 0;
 }
 
 .footer-distributed h3 span {
-  color: #e0ac1c;
+  color: #69a05b;
 }
 
 /* Footer links */
 
 .footer-distributed .footer-links {
-  color: #e0ac1c;
+ color: #69a05b;
   margin: 20px 0 12px;
 }
 
@@ -85,7 +86,8 @@ header h2 {
 }
 
 .footer-distributed .footer-center p {
-  color: #e0ac1c;
+
+  color: #69a05b;
   display: inline-block;
 
   vertical-align: middle;
@@ -107,7 +109,7 @@ header h2 {
 /* Footer Right */
 
 .footer-distributed .footer-right {
-  color: #e0ac1c;
+color: #69a05b;
   width: 30%;
 }
 
@@ -121,7 +123,7 @@ header h2 {
 
 .footer-distributed .footer-company-about span {
   display: block;
-  color: #e0ac1c;
+color: #69a05b;
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 20px;
@@ -192,8 +194,9 @@ header h2 {
 /* Icons */
 
 .icons a {
+  
   color: #fff;
-  background: #e0ac1c;
+  background:#69a05b;
   border-radius: 4px;
   text-align: center;
   text-decoration: none;
@@ -202,7 +205,7 @@ header h2 {
   display: inline-block;
   width: 40px;
   height: 38px;
-  padding-top: 12px;
+  padding-top: 6px;
   margin: 0 2px;
 
   transition: all 0.5s;
@@ -210,7 +213,7 @@ header h2 {
 }
 
 .icons a:hover {
-  background: gold;
+  background: #bcdbb4;
 }
 
 /* pop-up text */
@@ -251,4 +254,4 @@ header h2 {
   opacity: 1;
 }
 
-/* font awesome icons */
+
