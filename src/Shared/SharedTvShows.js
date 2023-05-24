@@ -46,7 +46,7 @@ const SharedTvShows = (props) => {
               src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
               alt='actor'
             />
-            <h3>{movie.original_name}</h3>
+            <h3>{movie.name}</h3>
           </div>
         ))}
       </div>

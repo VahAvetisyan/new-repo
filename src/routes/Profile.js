@@ -56,10 +56,7 @@ export default function TabsBottomNavExample() {
   };
 
   return (
-    <div
-      id="profile"
-      style={{ marginBottom: "100px", background: " #0C0032" }}
-    >
+    <div id="profile" style={{ marginBottom: "100px", background: "#c6e0bf" }}>
       <div id="profile-page">
         {url ? (
           <img id="profile-picture" src={url} alt="avatar" />

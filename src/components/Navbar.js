@@ -22,7 +22,7 @@ const Navbar = (props) => {
   return (
     <nav>
       {loggedInUser ? (
-        <ul className="menus" style={{ color: "#66FCF1" }}>
+        <ul className="menus" style={{ color: "black" }}>
           {menuItems.map((menu, index) => {
             const depthLevel = 0;
             return (

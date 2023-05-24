@@ -46,7 +46,8 @@ const ImageSlider = () => {
     slidesToScroll: 1,
     lazyLoad: true,
     autoplay: true,
-    autoplaySpeed: 2000
+    autoplaySpeed: 2000,
+    
   }
 
   return (
@@ -71,7 +72,7 @@ const ImageSlider = () => {
                     src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
                     alt='actor'
                   />
-                  <h5 style={{color: "white"}}>{movie.original_title}</h5>
+                  <h5 style={{color: "black"}}>{movie.title}</h5>
                 </div>
               </div>
             ) : null

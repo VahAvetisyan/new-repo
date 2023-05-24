@@ -6,7 +6,7 @@ const Header = (props) => {
   return (
     <header style={{ background: "black" }}>
       <div className="nav-area">
-        <Link to="/" className="logo" style={{ color: "#66FCF1" }}>
+        <Link to="/" className="logo" style={{ color: "#1f472b" }}>
           <LocalMoviesIcon /> Cinema ASD
         </Link>
         <Navbar isLoggedInUser={loggedInUser} />

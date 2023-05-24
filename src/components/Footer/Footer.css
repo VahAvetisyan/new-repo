@@ -1,17 +1,12 @@
-  @import url("http://fonts.googleapis.com/css?family=Open+Sans:400,700");
+@import url("http://fonts.googleapis.com/css?family=Open+Sans:400,700");
 
 header h2 {
   color: #f0525f;
 }
 
-header span {
-  color: #eaa03f;
-}
-
 /* The footer is fixed to the bottom of the page */
 
 .footer-distributed {
-
   box-sizing: border-box;
   width: 100%;
   text-align: left;
@@ -34,7 +29,8 @@ header span {
 }
 
 .footer-distributed h3 {
-  color: #ffffff;
+  color: #e0ac1c;
+
   font: normal 36px "Cookie", cursive;
   margin: 0;
 }
@@ -46,7 +42,7 @@ header span {
 /* Footer links */
 
 .footer-distributed .footer-links {
-  color: #ffffff;
+  color: #e0ac1c;
   margin: 20px 0 12px;
 }
 
@@ -72,7 +68,7 @@ header span {
 
 .footer-distributed .footer-center i {
   background-color: #33383b;
-  color: #ffffff;
+
   font-size: 25px;
   width: 38px;
   height: 38px;
@@ -89,8 +85,9 @@ header span {
 }
 
 .footer-distributed .footer-center p {
+  color: #e0ac1c;
   display: inline-block;
-  color: #ffffff;
+
   vertical-align: middle;
   margin: 0;
 }
@@ -103,13 +100,14 @@ header span {
 }
 
 .footer-distributed .footer-center p a {
-  color: #e0ac1c;
+  color: #8f9296;
   text-decoration: none;
 }
 
 /* Footer Right */
 
 .footer-distributed .footer-right {
+  color: #e0ac1c;
   width: 30%;
 }
 
@@ -123,7 +121,7 @@ header span {
 
 .footer-distributed .footer-company-about span {
   display: block;
-  color: #ffffff;
+  color: #e0ac1c;
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 20px;
@@ -148,13 +146,9 @@ header span {
   margin-bottom: 5px;
 }
 
-.footer-distributed .footer-icons a:hover {
-  background-color: #3f71ea;
-}
 
-.footer-links a:hover {
-  color: #3f71ea;
-}
+
+
 
 @media (max-width: 880px) {
   .footer-distributed .footer-left,
@@ -171,16 +165,18 @@ header span {
 }
 
 .icons {
-  display: inline-block;
+  margin: 0;
+  margin-top:20px ;
+ 
+  /* display: inline-block;
   position: absolute;
-
-  left: 68%;
-  bottom: -40%;
+  left: 64%;
+  bottom: -36%;
   -ms-transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); */
 }
-@media screen and (max-width: 1441px) and (min-width: 800px) {
+/* @media screen and (max-width: 1441px) and (min-width: 800px) {
   .icons {
     display: inline-block;
     position: absolute;
@@ -191,7 +187,7 @@ header span {
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
   }
-}
+} */
 
 /* Icons */
 

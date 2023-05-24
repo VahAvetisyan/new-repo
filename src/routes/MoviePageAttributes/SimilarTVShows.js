@@ -47,26 +47,28 @@ export default function SimilarTVShows(props) {
 
   return (
     <>
-      <div className='tag'>
+      <div className="tag">
         <h2> Similar TV Shows </h2>
       </div>
-      <div className='imgslider'>
+      <div className="imgslider">
         <Slider {...settings}>
           {similarMovies.map((movie) =>
             movie.poster_path ? (
-              <div key={movie.id} id='imgs-container'>
+              <div key={movie.id} id="imgs-container">
                 <div
                   key={movie.original_title}
-                  id='nested-imgs-container'
+                  id="nested-imgs-container"
                   onClick={() => {
-                    handlerOnClick(movie, movie.id)
+                    handlerOnClick(movie, movie.id);
                   }}
                 >
                   <img
                     key={movie.original_title}
                     src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-                    alt='actor'
+                    alt="actor"
                   />
+                  <h5>{movie.name}</h5>
+
                 </div>
               </div>
             ) : null
@@ -74,5 +76,5 @@ export default function SimilarTVShows(props) {
         </Slider>
       </div>
     </>
-  )
+  );
 }

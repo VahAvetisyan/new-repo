@@ -16,7 +16,7 @@ export default function TabsVertical() {
       <Tabs
         aria-label="Vertical tabs"
         orientation="vertical"
-        sx={{ minWidth: 300, borderRadius: "lg", background: " #333030" }}
+        sx={{ minWidth: 300, borderRadius: "lg", background: "#c6e0bf" }}
       >
         <TabList>
           <Tab>
