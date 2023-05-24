@@ -34,7 +34,7 @@ export default function MoviePage() {
 
   const getFavoriteList = async()=>{
     if(auth){
-    const docRef = doc(db, "Users", `${auth.currentUser.uid}`);
+    const docRef = doc(db, "Users", `${auth.currentUser?.uid}`);
     const docSnap = await getDoc(docRef);
     let favoriteMovies = (docSnap.data().favoriteMovies);
     setIsFavorite(favoriteMovies.some(el=> el===movieId));
@@ -84,7 +84,7 @@ export default function MoviePage() {
   }, [movieId]);
 
   const onStartHandle = async ()=>{
-    const historyRef = doc(db, "Users", `${auth?.currentUser.uid}`);
+    const historyRef = doc(db, "Users", `${auth.currentUser?.uid}`);
     await updateDoc(historyRef, {
       moviesHistory: arrayUnion(`${movieId}`),
     })
@@ -161,6 +161,7 @@ export default function MoviePage() {
         {videos.map((el) => (
           <>
             <ReactPlayer
+              key={el.key}
               onStart={() => {
                 onStartHandle();
               }}

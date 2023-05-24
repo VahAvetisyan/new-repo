@@ -28,7 +28,7 @@ export default function Reviews({ id }) {
     
 
     const docRef = collection(db, "Comments");
-    const q = await getDocs(query(docRef, where("entityId", "==", id)), orderBy('addingTime', 'asc'));
+    const q = await getDocs(query(docRef, where("entityId", "==", id)));
 
     q.forEach((el) => {
       comments.unshift(el.data());

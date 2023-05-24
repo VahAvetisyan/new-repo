@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react"
 import "./style/actors.css"
 import {useNavigate} from "react-router-dom"
-import "./style/responsive.css"
 import Responsive from "../Shared/Responsive"
 
 const Actors = () => {

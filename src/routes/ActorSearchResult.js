@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react"
 import "./style/actors.css"
 import {useLocation, useNavigate} from "react-router-dom"
-import "./style/responsive.css"
 
 const ActorSearchResult = () => {
   let [actor, setActor] = useState([])

@@ -7,19 +7,16 @@ import {useSelector, useDispatch} from "react-redux"
 import {selectResponsive} from "../../redux/reducers/responsiveReducer"
 import {setScreenSize} from "../../redux/reducers/responsiveReducer"
 import Responsive from "../../Shared/Responsive"
+import { MOVIES_API_KEY } from "../../constants/common"
 
-export default function SimilarMovies(props) {
-  const id = props.id
+export default function SimilarMovies({id}) {
   const navigate = useNavigate()
   const [similarMovies, setSimilarMovies] = useState([])
-  let dispatch = useDispatch()
   let screenSize = Responsive()
 
   const getSimilarMovies = async () => {
-    let api_key = "8cc8bb5915e1ce414955be2f44bcb790"
-    let response = await fetch(
-      `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${api_key}&language=en-US&page=1`
-    )
+    if(!id) return
+    let response = await fetch(`https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${MOVIES_API_KEY}&language=en-US&page=1`)
     let jsonData = await response.json()
     setSimilarMovies(jsonData.results)
   }
