@@ -3,9 +3,6 @@ import "../style/SimilarMovies.css"
 import {useNavigate} from "react-router-dom"
 import Slider from "react-slick"
 import {LinearProgress} from "@mui/material"
-import {useSelector, useDispatch} from "react-redux"
-import {selectResponsive} from "../../redux/reducers/responsiveReducer"
-import {setScreenSize} from "../../redux/reducers/responsiveReducer"
 import Responsive from "../../Shared/Responsive"
 import { MOVIES_API_KEY } from "../../constants/common"
 
@@ -40,9 +37,6 @@ export default function SimilarMovies({id}) {
     lazyLoad: true,
     autoplay: true,
     autoplaySpeed: 2000,
-    // speed:2000
-   
-
   }
 
   if (!similarMovies) {
